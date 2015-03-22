@@ -47,9 +47,12 @@ class FirstViewController: UIViewController {
 
     //Action take on notification
     func methodOfReceivedNotification(notification: NSNotification){
-        infoLabel.text = sensorAnaylize.normalizeXYZ?.stringValue
+        // TODO: Add original values of x, y, z
         
+        xLabel.text = NSString(format: "%f", sensorAnaylize.accelData.x)
+        yLabel.text = NSString(format: "%f", sensorAnaylize.accelData.y)
+        zLabel.text = NSString(format: "%f", sensorAnaylize.accelData.z)
+        infoLabel.text = sensorAnaylize.normalizeXYZ?.stringValue
     }
-
 }
 

@@ -14,8 +14,9 @@ import CoreMotion
 
 class SensorAnaylize: NSObject{
     private let _motionManager: CMMotionManager;
-    private let _LPFAccelData: LowPassFilter;
     private let _XYZArray: NSMutableArray;
+    private let _LPFAccelData: LowPassFilter;
+    var accelData: LowPassFilter
     var normalizeXYZ: NSNumber?{
         didSet {
             NSNotificationCenter.defaultCenter().postNotificationName("NotificationIdentifier", object: nil)
@@ -29,6 +30,7 @@ class SensorAnaylize: NSObject{
         
         _LPFAccelData = LowPassFilter(sampleRate: kUpdateFrequency, cutoffFrequency: kCutoffFrequency);
         _XYZArray = NSMutableArray(capacity: kBufferCapacity);
+        accelData = _LPFAccelData
     }
     
     func sensorAnaylizeOn() {
@@ -46,10 +48,8 @@ class SensorAnaylize: NSObject{
 
         _LPFAccelData.addAccelerometerData(accelData.acceleration.x
             , aY: accelData.acceleration.y, aZ: accelData.acceleration.z)
-
         normalizeXYZ = sqrt(pow(_LPFAccelData.x, 2) + pow(_LPFAccelData.y, 2) + pow(_LPFAccelData.z, 2))
-
-
+        
         let info: String = String(format: "%f %f %f %@ \n", _LPFAccelData.x, _LPFAccelData.y, _LPFAccelData.z, normalizeXYZ!)
         NSLog("Normalize info: %@", info)
 

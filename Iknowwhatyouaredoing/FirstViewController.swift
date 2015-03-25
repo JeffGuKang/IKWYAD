@@ -16,6 +16,10 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var xLabel: UILabel!
     @IBOutlet weak var yLabel: UILabel!
     @IBOutlet weak var zLabel: UILabel!
+    @IBOutlet weak var gyroLabelX: UILabel!
+    @IBOutlet weak var gyroLabelY: UILabel!
+    @IBOutlet weak var gyroLabelZ: UILabel!
+    
     @IBOutlet weak var infoLabel: UILabel!
     
     
@@ -49,10 +53,11 @@ class FirstViewController: UIViewController {
     func methodOfReceivedNotification(notification: NSNotification){
         // TODO: Add original values of x, y, z
         
-        xLabel.text = NSString(format: "%f", sensorAnaylize.accelData.x)
-        yLabel.text = NSString(format: "%f", sensorAnaylize.accelData.y)
-        zLabel.text = NSString(format: "%f", sensorAnaylize.accelData.z)
+        xLabel.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.x)
+        yLabel.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.y)
+        zLabel.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.z)
         infoLabel.text = sensorAnaylize.normalizeXYZ?.stringValue
+        
     }
 }
 

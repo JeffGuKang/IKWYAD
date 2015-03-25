@@ -17,7 +17,7 @@ let kMapRatio = 0.1//m per 1px
 let kPlusHead = 90.0
 
 let kBufferCapacity = 25 //Array buffer for step detection
-let kUpdateFrequency = 60.0
+let kUpdateFrequency = 60.0 // min: 10, max: 100
 let kCutoffFrequency = 5.0 // 5.0/60.0
 let kAccelerometerFrequency = 1.0 / 60.0//sec
 let kFileGyro = "gyro.txt"

@@ -16,21 +16,22 @@ class SensorAnaylize: NSObject{
     private let _motionManager: CMMotionManager;
     private let _XYZArray: NSMutableArray;
     private let _LPFAccelData: LowPassFilter;
-    var accelData: LowPassFilter
-    var normalizeXYZ: NSNumber?{
-        didSet {
-            NSNotificationCenter.defaultCenter().postNotificationName("NotificationIdentifier", object: nil)
-        }
-    }
+    var normalizeXYZ: NSNumber!
+    var gyroData: CMGyroData!
+    var accelData: CMAccelerometerData!
+
+    
     
     override init() {
         _motionManager = CMMotionManager();
         _motionManager.accelerometerUpdateInterval = kAccelerometerFrequency;
         _motionManager.startAccelerometerUpdates();
         
+        _motionManager.gyroUpdateInterval = kAccelerometerFrequency;
+        _motionManager.startGyroUpdates();
+        
         _LPFAccelData = LowPassFilter(sampleRate: kUpdateFrequency, cutoffFrequency: kCutoffFrequency);
         _XYZArray = NSMutableArray(capacity: kBufferCapacity);
-        accelData = _LPFAccelData
     }
     
     func sensorAnaylizeOn() {
@@ -40,17 +41,22 @@ class SensorAnaylize: NSObject{
     
     //    Thread Method
     func sensorAnaylizeThread() {
-        var accelData: CMAccelerometerData! = _motionManager.accelerometerData
-        
+        gyroData = _motionManager.gyroData
+        if (gyroData == nil) {
+            return
+        }
+        accelData = _motionManager.accelerometerData
         if (accelData == nil) {
             return
         }
-
-        _LPFAccelData.addAccelerometerData(accelData.acceleration.x
-            , aY: accelData.acceleration.y, aZ: accelData.acceleration.z)
-        normalizeXYZ = sqrt(pow(_LPFAccelData.x, 2) + pow(_LPFAccelData.y, 2) + pow(_LPFAccelData.z, 2))
         
-        let info: String = String(format: "%f %f %f %@ \n", _LPFAccelData.x, _LPFAccelData.y, _LPFAccelData.z, normalizeXYZ!)
+        _LPFAccelData.addAccelerometerData(accelData!.acceleration.x, aY: accelData!.acceleration.y, aZ: accelData!.acceleration.z)
+        
+        normalizeXYZ = sqrt(pow(accelData!.acceleration.x, 2) + pow(accelData!.acceleration.y, 2) + pow(accelData!.acceleration.z, 2))
+        
+//        let info: String = String(format: "%f %f %f %@ \n", _LPFAccelData.x, _LPFAccelData.y, _LPFAccelData.z, normalizeXYZ!)
+        let info: String = String(format: "%f %f %f %@ \n", accelData.acceleration.x, accelData.acceleration.y, accelData.acceleration.z, normalizeXYZ)
+
         NSLog("Normalize info: %@", info)
 
         writeInfoToFile(info)
@@ -95,6 +101,7 @@ class SensorAnaylize: NSObject{
             }
         }
 */
+        NSNotificationCenter.defaultCenter().postNotificationName("NotificationIdentifier", object: nil)
     }
     
 }

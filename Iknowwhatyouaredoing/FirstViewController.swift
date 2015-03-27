@@ -13,12 +13,14 @@ class FirstViewController: UIViewController {
     var sensorAnaylize: SensorAnaylize = SensorAnaylize()
     
     
-    @IBOutlet weak var xLabel: UILabel!
-    @IBOutlet weak var yLabel: UILabel!
-    @IBOutlet weak var zLabel: UILabel!
+    @IBOutlet weak var accelLabelX: UILabel!
+    @IBOutlet weak var accelLabelY: UILabel!
+    @IBOutlet weak var accelLabelZ: UILabel!
     @IBOutlet weak var gyroLabelX: UILabel!
     @IBOutlet weak var gyroLabelY: UILabel!
     @IBOutlet weak var gyroLabelZ: UILabel!
+    @IBOutlet weak var altituteLabel: UILabel!
+    @IBOutlet weak var relativeAltitudeLabel: UILabel!
     
     @IBOutlet weak var infoLabel: UILabel!
     
@@ -35,7 +37,8 @@ class FirstViewController: UIViewController {
         //    Receive(Get) Notification
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"NotificationIdentifier", object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "altimeterNotification:", name:"altimeterNotification", object: nil)
+
         
         //    Remove Notification
         
@@ -53,11 +56,18 @@ class FirstViewController: UIViewController {
     func methodOfReceivedNotification(notification: NSNotification){
         // TODO: Add original values of x, y, z
         
-        xLabel.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.x)
-        yLabel.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.y)
-        zLabel.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.z)
+        accelLabelX.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.x)
+        accelLabelY.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.y)
+        accelLabelZ.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.z)
         infoLabel.text = sensorAnaylize.normalizeXYZ?.stringValue
         
+        gyroLabelX.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.x)
+        gyroLabelY.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.y)
+        gyroLabelZ.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.z)
+    }
+    func altimeterNotification(notification: NSNotification) {
+        altituteLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.pressure)
+        relativeAltitudeLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.relativeAltitude)
     }
 }
 

@@ -16,13 +16,16 @@ class SensorAnaylize: NSObject{
     private let _motionManager: CMMotionManager;
     private let _XYZArray: NSMutableArray;
     private let _LPFAccelData: LowPassFilter;
+    let altimeter: CMAltimeter!;
+    
     var normalizeXYZ: NSNumber!
     var gyroData: CMGyroData!
     var accelData: CMAccelerometerData!
-
+    var altitudeData: CMAltitudeData!
     
     
     override init() {
+
         _motionManager = CMMotionManager();
         _motionManager.accelerometerUpdateInterval = kAccelerometerFrequency;
         _motionManager.startAccelerometerUpdates();
@@ -32,7 +35,20 @@ class SensorAnaylize: NSObject{
         
         _LPFAccelData = LowPassFilter(sampleRate: kUpdateFrequency, cutoffFrequency: kCutoffFrequency);
         _XYZArray = NSMutableArray(capacity: kBufferCapacity);
+        
+        super.init()
+        altimeter = CMAltimeter();
+        if (CMAltimeter.isRelativeAltitudeAvailable()) {
+            altimeter.startRelativeAltitudeUpdatesToQueue(NSOperationQueue.mainQueue(),
+                withHandler: { data, error in
+                    if (error == nil) {
+                        self.altitudeData = data
+                        NSNotificationCenter.defaultCenter().postNotificationName("altimeterNotification", object: nil)
+                    }
+                })
+        }
     }
+    
     
     func sensorAnaylizeOn() {
         var timer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(kAccelerometerFrequency, target: self, selector: Selector("sensorAnaylizeThread"), userInfo: nil, repeats: true);

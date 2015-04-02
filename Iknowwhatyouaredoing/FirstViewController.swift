@@ -58,7 +58,7 @@ class FirstViewController: UIViewController {
         let gyro_x = sensorAnaylize.gyroData.rotationRate.x
         let gyro_y = sensorAnaylize.gyroData.rotationRate.y
         let gyro_z = sensorAnaylize.gyroData.rotationRate.z
-        
+
         accelLabelX.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.x)
         accelLabelY.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.y)
         accelLabelZ.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.z)
@@ -70,7 +70,7 @@ class FirstViewController: UIViewController {
         
         
         
-        let info: String = String(format: "%f %f %f %@ \n", accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z)
+        let info: String = String(format: "%f %f %f %f %f %f \n", accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z)
 
         writeInfoToFile(info)
     }

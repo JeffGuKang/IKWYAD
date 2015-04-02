@@ -13,10 +13,10 @@ import CoreMotion
 
 
 class SensorAnaylize: NSObject{
-    private let _motionManager: CMMotionManager;
-    private let _XYZArray: NSMutableArray;
-    private let _LPFAccelData: LowPassFilter;
-    let altimeter: CMAltimeter!;
+    private let _motionManager: CMMotionManager
+    private let _XYZArray: NSMutableArray
+    private let _LPFAccelData: LowPassFilter
+    let altimeter: CMAltimeter!
     
     var normalizeXYZ: NSNumber!
     var gyroData: CMGyroData!
@@ -25,16 +25,19 @@ class SensorAnaylize: NSObject{
     
     
     override init() {
-
-        _motionManager = CMMotionManager();
-        _motionManager.accelerometerUpdateInterval = kAccelerometerFrequency;
-        _motionManager.startAccelerometerUpdates();
-        
-        _motionManager.gyroUpdateInterval = kAccelerometerFrequency;
-        _motionManager.startGyroUpdates();
+        //accelerometer
+        _motionManager = CMMotionManager()
+        _motionManager.accelerometerUpdateInterval = kAccelerometerFrequency
+        _motionManager.startAccelerometerUpdates()
+        //gyroscope
+        _motionManager.gyroUpdateInterval = kAccelerometerFrequency
+        _motionManager.startGyroUpdates()
+        //magnetometer
+        _motionManager.magnetometerUpdateInterval = kAccelerometerFrequency
+        _motionManager.magnetometerActive
         
         _LPFAccelData = LowPassFilter(sampleRate: kUpdateFrequency, cutoffFrequency: kCutoffFrequency);
-        _XYZArray = NSMutableArray(capacity: kBufferCapacity);
+        _XYZArray = NSMutableArray(capacity: kBufferCapacity)
         
         super.init()
         altimeter = CMAltimeter();
@@ -75,7 +78,6 @@ class SensorAnaylize: NSObject{
 
         NSLog("Normalize info: %@", info)
 
-        writeInfoToFile(info)
         
         
         //check step detection
@@ -127,31 +129,7 @@ func backwards(s1: String, s2: String) -> Bool {
     return s1 > s2
 }
 
-func writeInfoToFile(text: String) {
-    let dirs : [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
-    
-    if ((dirs) != nil) {
-        let dir = dirs![0]; //documents directory
-        let path = dir.stringByAppendingPathComponent("data.txt");
-        
-        if let outputStream = NSOutputStream(toFileAtPath: path, append: true) {
-            outputStream.open()
-            outputStream.write(text)
-        
-            outputStream.close()
-        }
-        else {
-            println("Unable to open file")
-        }
 
-        
-//        //writing
-//        text.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding, error: nil);
-//        //
-//        //            //reading
-//        //            let text2 = String(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil)
-    }
-}
 
 
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, UITextFieldDelegate {
 
     var sensorAnaylize: SensorAnaylize = SensorAnaylize()
     
@@ -23,21 +23,31 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var relativeAltitudeLabel: UILabel!
     
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var fileNameTextField: UITextField!
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var recordLabel: UILabel!
     
+    
+    @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         //UI Setup
         sensorAnaylize.sensorAnaylizeOn()
         
         //    Receive(Get) Notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"NotificationIdentifier", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "altimeterNotification:", name:"altimeterNotification", object: nil)
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        
         //    Remove Notification
-
 //        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationIdentifier", object: nil)
+        
+        self.fileNameTextField.delegate = self
+    }
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,9 +55,14 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true) // Causes the view (or one of its embedded text fields) to resign the first responder status.
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
     //Action take on notification
     func methodOfReceivedNotification(notification: NSNotification){
-        // TODO: Add original values of x, y, z
+
         let accel_x = sensorAnaylize.accelData.acceleration.x
         let accel_y = sensorAnaylize.accelData.acceleration.y
         let accel_z = sensorAnaylize.accelData.acceleration.z
@@ -68,21 +83,60 @@ class FirstViewController: UIViewController {
         
         
         let info: String = String(format: "%f %f %f %f %f %f \n", accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z)
+        
+        if recordButton.currentTitle == "Stop" {
+            writeInfoToFile(fileNameTextField.text, info)
+        }
+        else {
+        }
 
-        writeInfoToFile(info)
     }
+    
     func altimeterNotification(notification: NSNotification) {
         altituteLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.pressure)
         relativeAltitudeLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.relativeAltitude)
     }
+    
+    func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue()
+            let duration:NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
+            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+            UIView.animateWithDuration(duration,
+                delay: NSTimeInterval(0),
+                options: animationCurve,
+                animations: { self.view.layoutIfNeeded() },
+                completion: nil)
+        }
+    }
+    
+    @IBAction func recordButtonPushed(sender: AnyObject) {
+        if recordButton.currentTitle == "Start" {
+            recordButton.setTitle("Stop", forState: UIControlState.Normal)
+            recordLabel.text = "Recording"
+        }
+        else {
+            recordButton.setTitle("Start", forState: UIControlState.Normal)
+            recordLabel.text = "Record"
+        }
+    }
+    
+//    MARK: UITextField Delegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        fileNameTextField.resignFirstResponder()
+        return false
+    }
 }
 
-func writeInfoToFile(text: String) {
+func writeInfoToFile(fileName: String, text: String) {
     let dirs : [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
     
     if ((dirs) != nil) {
         let dir = dirs![0]; //documents directory
-        let path = dir.stringByAppendingPathComponent("data.txt");
+        let path = dir.stringByAppendingPathComponent(fileName + ".txt");
         
         if let outputStream = NSOutputStream(toFileAtPath: path, append: true) {
             outputStream.open()

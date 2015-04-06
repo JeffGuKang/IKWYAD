@@ -36,11 +36,9 @@ class DataManagerViewController: UITableViewController, UITableViewDataSource, U
         return 5
     }
     
-
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as  UITableViewCell
-        
+
         // set cell's textLabel.text property
         cell.textLabel?.text = "TEST \(indexPath.row)"
         // set cell's detailTextLabel.text property

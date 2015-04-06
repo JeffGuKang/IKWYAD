@@ -35,12 +35,9 @@ class FirstViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"NotificationIdentifier", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "altimeterNotification:", name:"altimeterNotification", object: nil)
 
-        
         //    Remove Notification
-        
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationIdentifier", object: nil)
-        
 
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationIdentifier", object: nil)
     }
 
     override func didReceiveMemoryWarning() {

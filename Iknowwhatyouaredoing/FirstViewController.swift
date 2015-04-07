@@ -29,6 +29,8 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
+    var originalConstraint: CGFloat?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +40,13 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         //    Receive(Get) Notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"NotificationIdentifier", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "altimeterNotification:", name:"altimeterNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillHideNotification, object: nil)
         
         //    Remove Notification
 //        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationIdentifier", object: nil)
         
+        self.originalConstraint = self.keyboardHeightLayoutConstraint?.constant
         self.fileNameTextField.delegate = self
     }
 
@@ -82,7 +86,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         
         
         
-        let info: String = String(format: "%f %f %f %f %f %f \n", accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z)
+        let info: String = String(format: "%f\t%f\t%f\t%f\t%f\t%f\t\n", accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z)
         
         if recordButton.currentTitle == "Stop" {
             writeInfoToFile(fileNameTextField.text, info)
@@ -98,13 +102,19 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardNotification(notification: NSNotification) {
+        let isShowing = notification.name == UIKeyboardWillShowNotification
+        
+        var tabbarHeight: CGFloat = 0
+        if self.tabBarController? != nil {
+            tabbarHeight = self.tabBarController!.tabBar.frame.height
+        }
         if let userInfo = notification.userInfo {
             let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue()
             let duration:NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
-            self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+            self.keyboardHeightLayoutConstraint?.constant = isShowing ? (endFrame!.size.height - tabbarHeight) : self.originalConstraint!
             UIView.animateWithDuration(duration,
                 delay: NSTimeInterval(0),
                 options: animationCurve,
@@ -141,7 +151,6 @@ func writeInfoToFile(fileName: String, text: String) {
         if let outputStream = NSOutputStream(toFileAtPath: path, append: true) {
             outputStream.open()
             outputStream.write(text)
-            
             outputStream.close()
         }
         else {

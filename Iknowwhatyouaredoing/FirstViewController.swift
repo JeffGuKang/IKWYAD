@@ -146,6 +146,10 @@ func writeInfoToFile(fileName: String, text: String) {
     
     if ((dirs) != nil) {
         let dir = dirs![0]; //documents directory
+        
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = NSDateFormatterStyle.MediumStyle
+        
         let path = dir.stringByAppendingPathComponent(fileName + ".txt");
         
         if let outputStream = NSOutputStream(toFileAtPath: path, append: true) {

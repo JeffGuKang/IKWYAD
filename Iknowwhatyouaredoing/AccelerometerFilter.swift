@@ -70,7 +70,7 @@ class LowPassFilter : AccelerometerFilter {
         z = aZ * alpha + z * (1.0 - alpha);
     }
     
-    func description() -> NSString {
+    func descript() -> NSString {
         return  (adaptive == true) ? "daptive Lowpass Filter" : "Lowpass Filter";
     }
     

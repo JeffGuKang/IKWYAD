@@ -42,7 +42,7 @@ class DataManagerViewController: UITableViewController, UITableViewDataSource, U
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as  UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as!  UITableViewCell
 
         // set cell's textLabel.text property
         cell.textLabel?.text = self.fileNames[indexPath.row]
@@ -58,7 +58,7 @@ class DataManagerViewController: UITableViewController, UITableViewDataSource, U
         if dirs != nil {
             let dir = dirs![0]
             let fileList = NSFileManager.defaultManager().contentsOfDirectoryAtPath(dir, error: theError)
-            return fileList as [String]
+            return fileList as! [String]
         }else{
             let fileList = [""]
             return fileList

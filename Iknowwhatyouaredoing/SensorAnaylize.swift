@@ -39,8 +39,10 @@ class SensorAnaylize: NSObject{
         _LPFAccelData = LowPassFilter(sampleRate: kUpdateFrequency, cutoffFrequency: kCutoffFrequency);
         _XYZArray = NSMutableArray(capacity: kBufferCapacity)
         
-        super.init()
         altimeter = CMAltimeter();
+        
+        super.init()
+
         if (CMAltimeter.isRelativeAltitudeAvailable()) {
             altimeter.startRelativeAltitudeUpdatesToQueue(NSOperationQueue.mainQueue(),
                 withHandler: { data, error in

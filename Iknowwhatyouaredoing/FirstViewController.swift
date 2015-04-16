@@ -59,9 +59,9 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true) // Causes the view (or one of its embedded text fields) to resign the first responder status.
-        super.touchesBegan(touches, withEvent: event)
+        super.touchesBegan(touches as Set<NSObject>, withEvent: event)
     }
     
     //Action take on notification
@@ -74,15 +74,16 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         let gyro_x = sensorAnaylize.gyroData.rotationRate.x
         let gyro_y = sensorAnaylize.gyroData.rotationRate.y
         let gyro_z = sensorAnaylize.gyroData.rotationRate.z
-
-        accelLabelX.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.x)
-        accelLabelY.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.y)
-        accelLabelZ.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.z)
+        
+        accelLabelX.text = String("\(sensorAnaylize.accelData.acceleration.x)")
+//        accelLabelX.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.x) as String
+        accelLabelY.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.y) as String
+        accelLabelZ.text = NSString(format: "%f", sensorAnaylize.accelData.acceleration.z) as String
         infoLabel.text = sensorAnaylize.normalizeXYZ?.stringValue
         
-        gyroLabelX.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.x)
-        gyroLabelY.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.y)
-        gyroLabelZ.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.z)
+        gyroLabelX.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.x) as String
+        gyroLabelY.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.y) as String
+        gyroLabelZ.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.z) as String
         
         
         
@@ -97,15 +98,15 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     }
     
     func altimeterNotification(notification: NSNotification) {
-        altituteLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.pressure)
-        relativeAltitudeLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.relativeAltitude)
+        altituteLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.pressure) as String
+        relativeAltitudeLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.relativeAltitude) as String
     }
     
     func keyboardNotification(notification: NSNotification) {
         let isShowing = notification.name == UIKeyboardWillShowNotification
         
         var tabbarHeight: CGFloat = 0
-        if self.tabBarController? != nil {
+        if self.tabBarController != nil {
             tabbarHeight = self.tabBarController!.tabBar.frame.height
         }
         if let userInfo = notification.userInfo {

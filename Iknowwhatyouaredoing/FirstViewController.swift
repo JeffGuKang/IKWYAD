@@ -30,7 +30,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     var originalConstraint: CGFloat?
-    
+    var timeDate: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         
         //    Remove Notification
 //        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationIdentifier", object: nil)
-        
+        timeDate = NSDate()
         self.originalConstraint = self.keyboardHeightLayoutConstraint?.constant
         self.fileNameTextField.delegate = self
     }
@@ -70,7 +70,6 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         let accel_x = sensorAnaylize.accelData.acceleration.x
         let accel_y = sensorAnaylize.accelData.acceleration.y
         let accel_z = sensorAnaylize.accelData.acceleration.z
-        
         let gyro_x = sensorAnaylize.gyroData.rotationRate.x
         let gyro_y = sensorAnaylize.gyroData.rotationRate.y
         let gyro_z = sensorAnaylize.gyroData.rotationRate.z
@@ -85,9 +84,9 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         gyroLabelY.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.y) as String
         gyroLabelZ.text = NSString(format: "%f", sensorAnaylize.gyroData.rotationRate.z) as String
         
-        
-        
-        let info: String = String(format: "%f\t%f\t%f\t%f\t%f\t%f\t\n", accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z)
+        let timeInterval = String(format: "%f", self.timeDate!.timeIntervalSinceNow)
+
+        let info: String = String(format: "\(timeInterval)\t%f\t%f\t%f\t%f\t%f\t%f\t\n", accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z)
         
         if recordButton.currentTitle == "Stop" {
             writeInfoToFile(fileNameTextField.text, info)
@@ -100,6 +99,15 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     func altimeterNotification(notification: NSNotification) {
         altituteLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.pressure) as String
         relativeAltitudeLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.relativeAltitude) as String
+        
+        let timeInterval = String(format: "%f", self.timeDate!.timeIntervalSinceNow)
+        let info = "\(timeInterval)\t\(altituteLabel.text!)\t\(relativeAltitudeLabel.text!)\n"
+        
+        if recordButton.currentTitle == "Stop" {
+            writeInfoToFile(fileNameTextField.text + "_altimeter", info)
+        }
+        else {
+        }
     }
     
     func keyboardNotification(notification: NSNotification) {
@@ -128,6 +136,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         if recordButton.currentTitle == "Start" {
             recordButton.setTitle("Stop", forState: UIControlState.Normal)
             recordLabel.text = "Recording"
+            self.timeDate = NSDate()
         }
         else {
             recordButton.setTitle("Start", forState: UIControlState.Normal)

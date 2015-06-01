@@ -22,7 +22,7 @@ class SensorAnaylize: NSObject{
     var gyroData: CMGyroData!
     var accelData: CMAccelerometerData!
     var altitudeData: CMAltitudeData!
-    
+    var stepDetection: Bool
     
     override init() {
         //accelerometer
@@ -40,6 +40,7 @@ class SensorAnaylize: NSObject{
         _XYZArray = NSMutableArray(capacity: kBufferCapacity)
         
         altimeter = CMAltimeter();
+        self.stepDetection = true
         
         super.init()
 
@@ -83,9 +84,11 @@ class SensorAnaylize: NSObject{
         
         
         //check step detection
-       
-
         _XYZArray.addObject(normalizeXYZ!)
+        if (self.stepDetection) {
+            
+        }
+        
         //          need to fine error
 
         /*

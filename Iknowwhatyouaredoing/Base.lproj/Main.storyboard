@@ -54,7 +54,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accelerometer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9y-Aw-g0b">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="6F60DA21-A129-4CF1-B644-B496ED7FBB14" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="1258E59E-EAD5-4653-B107-EA49D91A3491" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -63,7 +63,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gyrometer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNa-41-KXv">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="43402D25-257B-41A1-A2F9-F5498E070E2C" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="59105F27-6037-4E15-97FE-DB5174CC899D" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -84,7 +84,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sn8-vT-3k5">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="43402D25-257B-41A1-A2F9-F5498E070E2C" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="59105F27-6037-4E15-97FE-DB5174CC899D" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -108,7 +108,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Magnetometer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWT-D8-tLy">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="4C95A9A8-A6BB-4063-80E2-660FFDBFD91C" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="961971F2-7957-4B96-8537-BBB2D18CB98D" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -477,7 +477,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="43402D25-257B-41A1-A2F9-F5498E070E2C" width="256" height="256">
+        <image name="1258E59E-EAD5-4653-B107-EA49D91A3491" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -4855,7 +4855,7 @@ ohscgAWABoAJEADSIAohIl8QFE5TVElGRlJlcHJlc2VudGF0aW9ugAeACE8SAAQNUk1NACoABAAIdXiB
 /wARAQAAAwAAAAEBAAAAAQEAAwAAAAEBAAAAAQIAAwAAAAQABADqAQMAAwAAAAEAAQAAAQYAAwAAAAEA
 AgAAAREABAAAAAIABAD6ARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
 BADyARoABQAAAAEABADaARsABQAAAAEABADiARwAAwAAAAEAAQAAASgAAwAAAAEAAgAAAVIAAwAAAAEA
-AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAR//z/////ABH//P////8ACAAIAAgACAACAAAA
+AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAR//v/////ABH/+/////8ACAAIAAgACAACAAAA
 AgAAAAAACAACAAgAAQABAAEAAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BN
 U0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQA
@@ -4920,7 +4920,7 @@ BA7SAAQO1wAEDtkABA7bAAQO4AAEDugABA7rAAQO8AAEDvgABA77AAQPDQAEDxAABA8VAAAAAAAABAEA
 AAAAAAAAQgAAAAAAAAAAAAAAAAAEDxc
 </mutableData>
         </image>
-        <image name="4C95A9A8-A6BB-4063-80E2-660FFDBFD91C" width="256" height="256">
+        <image name="59105F27-6037-4E15-97FE-DB5174CC899D" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -9298,7 +9298,7 @@ ohscgAWABoAJEADSIAohIl8QFE5TVElGRlJlcHJlc2VudGF0aW9ugAeACE8SAAQNUk1NACoABAAIdXiB
 /wARAQAAAwAAAAEBAAAAAQEAAwAAAAEBAAAAAQIAAwAAAAQABADqAQMAAwAAAAEAAQAAAQYAAwAAAAEA
 AgAAAREABAAAAAIABAD6ARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
 BADyARoABQAAAAEABADaARsABQAAAAEABADiARwAAwAAAAEAAQAAASgAAwAAAAEAAgAAAVIAAwAAAAEA
-AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAI//z/////AAj//P////8ACAAIAAgACAACAAAA
+AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAR//v/////ABH/+/////8ACAAIAAgACAACAAAA
 AgAAAAAACAACAAgAAQABAAEAAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BN
 U0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQA
@@ -9363,7 +9363,7 @@ BA7SAAQO1wAEDtkABA7bAAQO4AAEDugABA7rAAQO8AAEDvgABA77AAQPDQAEDxAABA8VAAAAAAAABAEA
 AAAAAAAAQgAAAAAAAAAAAAAAAAAEDxc
 </mutableData>
         </image>
-        <image name="6F60DA21-A129-4CF1-B644-B496ED7FBB14" width="256" height="256">
+        <image name="961971F2-7957-4B96-8537-BBB2D18CB98D" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -13741,7 +13741,7 @@ ohscgAWABoAJEADSIAohIl8QFE5TVElGRlJlcHJlc2VudGF0aW9ugAeACE8SAAQNUk1NACoABAAIdXiB
 /wARAQAAAwAAAAEBAAAAAQEAAwAAAAEBAAAAAQIAAwAAAAQABADqAQMAAwAAAAEAAQAAAQYAAwAAAAEA
 AgAAAREABAAAAAIABAD6ARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
 BADyARoABQAAAAEABADaARsABQAAAAEABADiARwAAwAAAAEAAQAAASgAAwAAAAEAAgAAAVIAAwAAAAEA
-AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAR//z/////ABH//P////8ACAAIAAgACAACAAAA
+AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAI//v/////AAj/+/////8ACAAIAAgACAACAAAA
 AgAAAAAACAACAAgAAQABAAEAAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BN
 U0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQA

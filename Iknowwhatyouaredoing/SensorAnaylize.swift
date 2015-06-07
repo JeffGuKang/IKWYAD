@@ -11,6 +11,9 @@ import Foundation
 import UIKit
 import CoreMotion
 
+protocol SensorAnaylizeDelegate {
+    func stepDetected(SensorAnaylize)
+}
 
 class SensorAnaylize: NSObject{
     private let _motionManager: CMMotionManager
@@ -23,6 +26,8 @@ class SensorAnaylize: NSObject{
     var accelData: CMAccelerometerData!
     var altitudeData: CMAltitudeData!
     var stepDetection: Bool
+    
+    var delegate: SensorAnaylizeDelegate?
     
     override init() {
         //accelerometer
@@ -82,48 +87,52 @@ class SensorAnaylize: NSObject{
 //        NSLog("Normalize info: %@", info)
 
         
-        
-        //check step detection
+
+// MARK: Step Detection. Runtime Error
         _XYZArray.addObject(normalizeXYZ!)
         if (self.stepDetection) {
-            
-        }
-        
-        //          need to fine error
-
-        /*
-        if (_XYZArray.count > kBufferCapacity) {
-            _XYZArray.removeObjectAtIndex(0)
-            var sortedArray: NSArray = _XYZArray.sortedArrayUsingSelector(NSSelectorFromString("backwards"))
-            
-            var lowest: NSNumber = sortedArray.objectAtIndex(0) as NSNumber;
-            var highest: NSNumber = sortedArray.lastObject as NSNumber;
-            
-            var indexOfHighest = _XYZArray.indexOfObject(highest);
-            var indexOfLowest = _XYZArray.indexOfObject(lowest);
-            var gap = indexOfLowest - indexOfHighest;
-
-            if (gap >= kMinPeakToPeakTime &&
-                gap <= kMaxPeakToPeakTime &&
-                !lowest.isEqualToNumber( _XYZArray.lastObject as NSNumber) &&
-                !highest.isEqualToNumber(_XYZArray.objectAtIndex(0) as NSNumber)) {
-                    
-                var previousOfHighest = _XYZArray.objectAtIndex(indexOfHighest - 1) as NSNumber
-                var nextOfHighest = _XYZArray.objectAtIndex(indexOfHighest + 1) as NSNumber
-                var previousOfLowest = _XYZArray.objectAtIndex(indexOfLowest - 1) as NSNumber
-                var nextOfLowest = _XYZArray.objectAtIndex(indexOfLowest + 1) as NSNumber
+            if (_XYZArray.count > kBufferCapacity) {
+                _XYZArray.removeObjectAtIndex(0)
+                var sortedArray: NSArray = _XYZArray.sortedArrayUsingSelector(NSSelectorFromString("backwards"))
                 
-                //  highest and lowest are peaks
-                if (highest.doubleValue > previousOfHighest.doubleValue && highest.doubleValue > nextOfHighest.doubleValue && lowest.doubleValue < previousOfLowest.doubleValue && lowest.doubleValue < nextOfLowest.doubleValue) {
-                    
-                    //step detected
-                    if (highest.doubleValue - lowest.doubleValue >= kMinPeakToPeak && highest.doubleValue - lowest.doubleValue <= kMaxPeakToPeak) {
-                        delegate?.stepDetected(self);
-                    }
+                var lowest: NSNumber? = sortedArray.objectAtIndex(0) as? NSNumber
+                var highest: NSNumber? = sortedArray.lastObject as? NSNumber
+                var indexOfHighest: Int = 0
+                var indexOfLowest: Int = 0
+                if highest != nil {
+                    indexOfLowest = _XYZArray.indexOfObject(highest!)
+                }
+                if lowest != nil {
+                    indexOfHighest = _XYZArray.indexOfObject(lowest!)
+                }
+                
+                var gap = indexOfLowest - indexOfHighest
+                
+                if (gap >= kMinPeakToPeakTime &&
+                    gap <= kMaxPeakToPeakTime &&
+                    lowest?.isEqualToNumber( _XYZArray.lastObject as! NSNumber) == true &&
+                    highest?.isEqualToNumber(_XYZArray.objectAtIndex(0) as! NSNumber) == false) {
+                        
+                        var previousOfHighest = _XYZArray.objectAtIndex(indexOfHighest - 1) as? NSNumber
+                        var nextOfHighest = _XYZArray.objectAtIndex(indexOfHighest + 1) as? NSNumber
+                        var previousOfLowest = _XYZArray.objectAtIndex(indexOfLowest - 1) as? NSNumber
+                        var nextOfLowest = _XYZArray.objectAtIndex(indexOfLowest + 1) as? NSNumber
+                        
+                        //  highest and lowest are peaks
+                        if (highest != nil && lowest != nil && previousOfHighest != nil && nextOfHighest != nil) {
+                            if (highest!.doubleValue > previousOfHighest!.doubleValue && highest!.doubleValue > nextOfHighest!.doubleValue && lowest!.doubleValue < previousOfLowest!.doubleValue && lowest!.doubleValue < nextOfLowest!.doubleValue) {
+                                
+                                //step detected
+                                if (highest!.doubleValue - lowest!.doubleValue >= kMinPeakToPeak && highest!.doubleValue - lowest!.doubleValue <= kMaxPeakToPeak) {
+                                    delegate!.stepDetected(self);
+                                    println("STeb Detected")
+                                }
+                            }
+                            
+                        }
                 }
             }
         }
-*/
         NSNotificationCenter.defaultCenter().postNotificationName("NotificationIdentifier", object: nil)
     }
     

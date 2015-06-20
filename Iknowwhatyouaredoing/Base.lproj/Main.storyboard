@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -54,7 +55,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accelerometer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9y-Aw-g0b">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="3FB59297-2F42-41E2-8185-7094D394A277" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="92275137-E3B2-49CC-BD95-BE170077189E" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -63,7 +64,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gyrometer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNa-41-KXv">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="6255CA22-B7AD-47EF-92DB-B6AACD2A6248" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="9693A960-4EE5-4481-8352-8FF129D5DF6D" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -84,7 +85,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sn8-vT-3k5">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="6255CA22-B7AD-47EF-92DB-B6AACD2A6248" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="9693A960-4EE5-4481-8352-8FF129D5DF6D" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -108,7 +109,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Magnetometer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWT-D8-tLy">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="1596D698-00B2-4E42-A3C7-BF16565C0B2A" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="328E29ED-6591-48C4-874D-B178D52DA3F9" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -387,11 +388,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifer" textLabel="YPn-34-zbf" style="IBUITableViewCellStyleDefault" id="k7I-Ut-Rcv">
+                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k7I-Ut-Rcv" id="A6i-Gd-2XB">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YPn-34-zbf">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -477,7 +481,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1596D698-00B2-4E42-A3C7-BF16565C0B2A" width="256" height="256">
+        <image name="328E29ED-6591-48C4-874D-B178D52DA3F9" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -4855,7 +4859,7 @@ ohscgAWABoAJEADSIAohIl8QFE5TVElGRlJlcHJlc2VudGF0aW9ugAeACE8SAAQNUk1NACoABAAIdXiB
 /wARAQAAAwAAAAEBAAAAAQEAAwAAAAEBAAAAAQIAAwAAAAQABADqAQMAAwAAAAEAAQAAAQYAAwAAAAEA
 AgAAAREABAAAAAIABAD6ARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
 BADyARoABQAAAAEABADaARsABQAAAAEABADiARwAAwAAAAEAAQAAASgAAwAAAAEAAgAAAVIAAwAAAAEA
-AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAI//r/////AAj/+v////8ACAAIAAgACAACAAAA
+AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAI//f/////AAj/9/////8ACAAIAAgACAACAAAA
 AgAAAAAACAACAAgAAQABAAEAAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BN
 U0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQA
@@ -4920,7 +4924,7 @@ BA7SAAQO1wAEDtkABA7bAAQO4AAEDugABA7rAAQO8AAEDvgABA77AAQPDQAEDxAABA8VAAAAAAAABAEA
 AAAAAAAAQgAAAAAAAAAAAAAAAAAEDxc
 </mutableData>
         </image>
-        <image name="3FB59297-2F42-41E2-8185-7094D394A277" width="256" height="256">
+        <image name="92275137-E3B2-49CC-BD95-BE170077189E" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -9298,7 +9302,7 @@ ohscgAWABoAJEADSIAohIl8QFE5TVElGRlJlcHJlc2VudGF0aW9ugAeACE8SAAQNUk1NACoABAAIdXiB
 /wARAQAAAwAAAAEBAAAAAQEAAwAAAAEBAAAAAQIAAwAAAAQABADqAQMAAwAAAAEAAQAAAQYAAwAAAAEA
 AgAAAREABAAAAAIABAD6ARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
 BADyARoABQAAAAEABADaARsABQAAAAEABADiARwAAwAAAAEAAQAAASgAAwAAAAEAAgAAAVIAAwAAAAEA
-AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAR//r/////ABH/+v////8ACAAIAAgACAACAAAA
+AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAR//f/////ABH/9/////8ACAAIAAgACAACAAAA
 AgAAAAAACAACAAgAAQABAAEAAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BN
 U0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQA
@@ -9363,7 +9367,7 @@ BA7SAAQO1wAEDtkABA7bAAQO4AAEDugABA7rAAQO8AAEDvgABA77AAQPDQAEDxAABA8VAAAAAAAABAEA
 AAAAAAAAQgAAAAAAAAAAAAAAAAAEDxc
 </mutableData>
         </image>
-        <image name="6255CA22-B7AD-47EF-92DB-B6AACD2A6248" width="256" height="256">
+        <image name="9693A960-4EE5-4481-8352-8FF129D5DF6D" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -13741,7 +13745,7 @@ ohscgAWABoAJEADSIAohIl8QFE5TVElGRlJlcHJlc2VudGF0aW9ugAeACE8SAAQNUk1NACoABAAIdXiB
 /wARAQAAAwAAAAEBAAAAAQEAAwAAAAEBAAAAAQIAAwAAAAQABADqAQMAAwAAAAEAAQAAAQYAAwAAAAEA
 AgAAAREABAAAAAIABAD6ARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
 BADyARoABQAAAAEABADaARsABQAAAAEABADiARwAAwAAAAEAAQAAASgAAwAAAAEAAgAAAVIAAwAAAAEA
-AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAR//r/////ABH/+v////8ACAAIAAgACAACAAAA
+AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAR//f/////ABH/9/////8ACAAIAAgACAACAAAA
 AgAAAAAACAACAAgAAQABAAEAAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BN
 U0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQA

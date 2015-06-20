@@ -25,7 +25,7 @@ class SensorAnaylize: NSObject{
     var gyroData: CMGyroData!
     var accelData: CMAccelerometerData!
     var altitudeData: CMAltitudeData!
-    var stepDetection: Bool
+    var stepDetection: Bool = false
     
     var delegate: SensorAnaylizeDelegate?
     
@@ -45,7 +45,7 @@ class SensorAnaylize: NSObject{
         _XYZArray = NSMutableArray(capacity: kBufferCapacity)
         
         altimeter = CMAltimeter();
-        self.stepDetection = true
+
         
         super.init()
 
@@ -62,7 +62,7 @@ class SensorAnaylize: NSObject{
     
     
     func sensorAnaylizeOn() {
-        var timer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(kAccelerometerFrequency, target: self, selector: Selector("sensorAnaylizeThread"), userInfo: nil, repeats: true);
+        let timer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(kAccelerometerFrequency, target: self, selector: Selector("sensorAnaylizeThread"), userInfo: nil, repeats: true);
         timer.fire();
     }
     
@@ -93,10 +93,10 @@ class SensorAnaylize: NSObject{
         if (self.stepDetection) {
             if (_XYZArray.count > kBufferCapacity) {
                 _XYZArray.removeObjectAtIndex(0)
-                var sortedArray: NSArray = _XYZArray.sortedArrayUsingSelector(NSSelectorFromString("backwards"))
+                let sortedArray: NSArray = _XYZArray.sortedArrayUsingSelector(NSSelectorFromString("backwards"))
                 
-                var lowest: NSNumber? = sortedArray.objectAtIndex(0) as? NSNumber
-                var highest: NSNumber? = sortedArray.lastObject as? NSNumber
+                let lowest: NSNumber? = sortedArray.objectAtIndex(0) as? NSNumber
+                let highest: NSNumber? = sortedArray.lastObject as? NSNumber
                 var indexOfHighest: Int = 0
                 var indexOfLowest: Int = 0
                 if highest != nil {
@@ -106,17 +106,17 @@ class SensorAnaylize: NSObject{
                     indexOfHighest = _XYZArray.indexOfObject(lowest!)
                 }
                 
-                var gap = indexOfLowest - indexOfHighest
+                let gap = indexOfLowest - indexOfHighest
                 
                 if (gap >= kMinPeakToPeakTime &&
                     gap <= kMaxPeakToPeakTime &&
                     lowest?.isEqualToNumber( _XYZArray.lastObject as! NSNumber) == true &&
                     highest?.isEqualToNumber(_XYZArray.objectAtIndex(0) as! NSNumber) == false) {
                         
-                        var previousOfHighest = _XYZArray.objectAtIndex(indexOfHighest - 1) as? NSNumber
-                        var nextOfHighest = _XYZArray.objectAtIndex(indexOfHighest + 1) as? NSNumber
-                        var previousOfLowest = _XYZArray.objectAtIndex(indexOfLowest - 1) as? NSNumber
-                        var nextOfLowest = _XYZArray.objectAtIndex(indexOfLowest + 1) as? NSNumber
+                        let previousOfHighest = _XYZArray.objectAtIndex(indexOfHighest - 1) as? NSNumber
+                        let nextOfHighest = _XYZArray.objectAtIndex(indexOfHighest + 1) as? NSNumber
+                        let previousOfLowest = _XYZArray.objectAtIndex(indexOfLowest - 1) as? NSNumber
+                        let nextOfLowest = _XYZArray.objectAtIndex(indexOfLowest + 1) as? NSNumber
                         
                         //  highest and lowest are peaks
                         if (highest != nil && lowest != nil && previousOfHighest != nil && nextOfHighest != nil) {
@@ -125,7 +125,7 @@ class SensorAnaylize: NSObject{
                                 //step detected
                                 if (highest!.doubleValue - lowest!.doubleValue >= kMinPeakToPeak && highest!.doubleValue - lowest!.doubleValue <= kMaxPeakToPeak) {
                                     delegate!.stepDetected(self);
-                                    println("STeb Detected")
+                                    print("STeb Detected")
                                 }
                             }
                             

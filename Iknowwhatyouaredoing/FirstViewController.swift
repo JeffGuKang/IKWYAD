@@ -59,9 +59,9 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true) // Causes the view (or one of its embedded text fields) to resign the first responder status.
-        super.touchesBegan(touches as Set<NSObject>, withEvent: event)
+        super.touchesBegan(touches, withEvent: event)
     }
     
     //Action take on notification
@@ -89,7 +89,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         let info: String = String(format: "\(timeInterval)\t%f\t%f\t%f\t%f\t%f\t%f\t\n", accel_x, accel_y, accel_z, gyro_x, gyro_y, gyro_z)
         
         if recordButton.currentTitle == "Stop" {
-            writeInfoToFile(fileNameTextField.text, info)
+            writeInfoToFile(fileNameTextField.text!, text: info)
         }
         else {
         }
@@ -104,7 +104,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         let info = "\(timeInterval)\t\(altituteLabel.text!)\t\(relativeAltitudeLabel.text!)\n"
         
         if recordButton.currentTitle == "Stop" {
-            writeInfoToFile(fileNameTextField.text + "_altimeter", info)
+            writeInfoToFile(fileNameTextField.text! + "_altimeter", text: info)
         }
         else {
         }
@@ -152,7 +152,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
 }
 
 func writeInfoToFile(fileName: String, text: String) {
-    let dirs : [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
+    let dirs : [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true)
     
     if ((dirs) != nil) {
         let dir = dirs![0]; //documents directory
@@ -168,7 +168,7 @@ func writeInfoToFile(fileName: String, text: String) {
             outputStream.close()
         }
         else {
-            println("Unable to open file")
+            print("Unable to open file")
         }
         
         

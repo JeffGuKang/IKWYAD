@@ -8,10 +8,10 @@
 
 import UIKit
 
-class DataManagerViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class DataManagerViewController: UITableViewController {
     @IBOutlet weak var dataManagerTableView: UITableView!
     
-    let cellIdentifier = "CellIdentifer"
+    let CellIdentifier = "CellIdentifer"
     var fileNames = [String]()
     
     override func viewDidLoad() {
@@ -42,8 +42,7 @@ class DataManagerViewController: UITableViewController, UITableViewDataSource, U
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as!  UITableViewCell
-
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)!
         // set cell's textLabel.text property
         cell.textLabel?.text = self.fileNames[indexPath.row]
         // set cell's detailTextLabel.text property
@@ -53,11 +52,18 @@ class DataManagerViewController: UITableViewController, UITableViewDataSource, U
     
     func listFilesFromDocumentsFolder() -> [String]
     {
-        var theError = NSErrorPointer()
-        let dirs = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
-        if dirs != nil {
-            let dir = dirs![0]
-            let fileList = NSFileManager.defaultManager().contentsOfDirectoryAtPath(dir, error: theError)
+        let theError = NSErrorPointer()
+        let dirs = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true)
+        if !dirs.isEmpty {
+            let dir = dirs[0]
+            let fileList: [AnyObject]?
+            do {
+                fileList = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(dir)
+            }
+            catch let error as NSError {
+                theError.memory = error
+                fileList = nil
+            }
             return fileList as! [String]
         }else{
             let fileList = [""]

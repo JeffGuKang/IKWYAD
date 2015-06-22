@@ -51,13 +51,13 @@ class LowPassFilter : AccelerometerFilter {
     
     init(sampleRate: Double, cutoffFrequency freq: Double) {
         super.init()
-        var dt: Double = 1.0 / sampleRate;
-        var RC = 1.0 / freq;
+        let dt: Double = 1.0 / sampleRate;
+        let RC = 1.0 / freq;
         filterConstant = dt / (dt + RC);
     }
     
     override func addAcceleration(accel: CMAcceleration) {
-        var alpha: Double! = filterConstant;
+        let alpha: Double! = filterConstant;
         x = accel.x * alpha + x * (1.0 - alpha);
         y = accel.y * alpha + y * (1.0 - alpha);
         z = accel.z * alpha + z * (1.0 - alpha);

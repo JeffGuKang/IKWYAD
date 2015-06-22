@@ -88,9 +88,9 @@ class SensorAnaylize: NSObject{
 
         
 
-// MARK: Step Detection. Runtime Error
         _XYZArray.addObject(normalizeXYZ!)
-        if (self.stepDetection) {
+        // TODO: Step Detection. Runtime Error
+/*        if (self.stepDetection) {
             if (_XYZArray.count > kBufferCapacity) {
                 _XYZArray.removeObjectAtIndex(0)
                 let sortedArray: NSArray = _XYZArray.sortedArrayUsingSelector(NSSelectorFromString("backwards"))
@@ -132,7 +132,7 @@ class SensorAnaylize: NSObject{
                         }
                 }
             }
-        }
+        } */
         NSNotificationCenter.defaultCenter().postNotificationName("NotificationIdentifier", object: nil)
     }
     

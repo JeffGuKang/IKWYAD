@@ -59,7 +59,8 @@ class DataManagerViewController: UITableViewController {
             let fileList: [AnyObject]?
             do {
                 fileList = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(dir)
-            } catch let error as NSError {
+            }
+            catch let error as NSError {
                 theError.memory = error
                 fileList = nil
             }

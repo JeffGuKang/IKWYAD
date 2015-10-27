@@ -22,7 +22,7 @@
                                 <rect key="frame" x="30" y="28" width="149" height="26"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="90838CB3-4297-4E09-B450-9FE33CE4F6D1" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="9EF46159-2589-45A3-A2A9-B8191C69CC9E" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -75,7 +75,7 @@
                                 <rect key="frame" x="402" y="28" width="108" height="26"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="BE1CD78B-7408-4DCC-B135-FA97935F30BE" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="6B28AE34-8029-4BFF-B889-2B92CBFC5284" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -207,7 +207,7 @@
                                 <rect key="frame" x="402" y="213" width="149" height="26"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" patternImage="173A0BE8-F826-4EE9-908C-D3A0518D9E96" colorSpace="pattern"/>
+                                <color key="textColor" patternImage="64944E41-0A3F-41F7-9FCA-BB929A2B4A54" colorSpace="pattern"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -391,7 +391,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="173A0BE8-F826-4EE9-908C-D3A0518D9E96" width="256" height="256">
+        <image name="64944E41-0A3F-41F7-9FCA-BB929A2B4A54" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -4769,7 +4769,7 @@ ohscgAWABoAJEADSIAohIl8QFE5TVElGRlJlcHJlc2VudGF0aW9ugAeACE8SAAQNUk1NACoABAAIdXiB
 /wARAQAAAwAAAAEBAAAAAQEAAwAAAAEBAAAAAQIAAwAAAAQABADqAQMAAwAAAAEAAQAAAQYAAwAAAAEA
 AgAAAREABAAAAAIABAD6ARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
 BADyARoABQAAAAEABADaARsABQAAAAEABADiARwAAwAAAAEAAQAAASgAAwAAAAEAAgAAAVIAAwAAAAEA
-AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAI//D/////AAj/8P////8ACAAIAAgACAACAAAA
+AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAI/+//////AAj/7/////8ACAAIAAgACAACAAAA
 AgAAAAAACAACAAgAAQABAAEAAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BN
 U0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQA
@@ -4834,7 +4834,7 @@ AAQO2AAEDt0ABA7lAAQO6AAEDvoABA79AAQPAgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAABA8E
 A
 </mutableData>
         </image>
-        <image name="90838CB3-4297-4E09-B450-9FE33CE4F6D1" width="256" height="256">
+        <image name="6B28AE34-8029-4BFF-B889-2B92CBFC5284" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -9277,7 +9277,7 @@ AAQO2AAEDt0ABA7lAAQO6AAEDvoABA79AAQPAgAAAAAAAAQBAAAAAAAAAEEAAAAAAAAAAAAAAAAABA8E
 A
 </mutableData>
         </image>
-        <image name="BE1CD78B-7408-4DCC-B135-FA97935F30BE" width="256" height="256">
+        <image name="9EF46159-2589-45A3-A2A9-B8191C69CC9E" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -13655,7 +13655,7 @@ ohscgAWABoAJEADSIAohIl8QFE5TVElGRlJlcHJlc2VudGF0aW9ugAeACE8SAAQNUk1NACoABAAIdXiB
 /wARAQAAAwAAAAEBAAAAAQEAAwAAAAEBAAAAAQIAAwAAAAQABADqAQMAAwAAAAEAAQAAAQYAAwAAAAEA
 AgAAAREABAAAAAIABAD6ARIAAwAAAAEAAQAAARUAAwAAAAEABAAAARYAAwAAAAEAgAAAARcABAAAAAIA
 BADyARoABQAAAAEABADaARsABQAAAAEABADiARwAAwAAAAEAAQAAASgAAwAAAAEAAgAAAVIAAwAAAAEA
-AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAR//D/////ABH/8P////8ACAAIAAgACAACAAAA
+AQAAAVMAAwAAAAQABAECh3MABwAADEgABAEKAAAAAAAR/+7/////ABH/7v////8ACAAIAAgACAACAAAA
 AgAAAAAACAACAAgAAQABAAEAAQAADEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BN
 U0ZUAAAAAElFQyBzUkdCAAAAAAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQA

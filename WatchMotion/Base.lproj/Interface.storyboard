@@ -27,7 +27,7 @@
                         </group>
                         <table alignment="left" id="Fbd-Sh-TUo">
                             <items>
-                                <tableRow identifier="motionRow" id="TZR-1G-ZhI" customClass="MotionRowController" customModule="Iknowwhatyouaredoing">
+                                <tableRow identifier="motionRow" id="TZR-1G-ZhI" customClass="TableGroupController" customModule="WatchMotion_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="SUH-uB-0Kz">
                                         <items>
                                             <label alignment="left" text="X" id="IU7-bk-sQR"/>
@@ -39,8 +39,8 @@
                                         </connections>
                                     </group>
                                     <connections>
-                                        <outlet property="axisLabel" destination="IU7-bk-sQR" id="v9j-55-PL1"/>
-                                        <outlet property="axisValueLabel" destination="15r-t4-dSg" id="Lk7-TS-ViP"/>
+                                        <outlet property="axisLabel" destination="IU7-bk-sQR" id="k12-Gi-knW"/>
+                                        <outlet property="axisValue" destination="15r-t4-dSg" id="Mw0-gS-tR2"/>
                                         <outlet property="separator" destination="jlB-o3-uqj" id="dAG-pO-yW1"/>
                                     </connections>
                                 </tableRow>

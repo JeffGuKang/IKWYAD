@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="uNy-rD-lru">
+            <objects>
+                <controller id="jNP-e0-btl"/>
+            </objects>
+            <point key="canvasLocation" x="414" y="347"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchMotion" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="center" spacing="2" id="ZdR-qY-yiU">
+                            <items>
+                                <label alignment="left" text="A" id="0LY-gd-qcU" userLabel="A"/>
+                                <label alignment="left" text="G" id="CL3-9A-GxY" userLabel="G"/>
+                                <label alignment="left" text="M" id="YJ4-eV-CXZ" userLabel="M"/>
+                                <label alignment="left" text="D" id="xUM-Lh-0fw" userLabel="D"/>
+                            </items>
+                        </group>
+                        <table alignment="left" id="Fbd-Sh-TUo">
+                            <items>
+                                <tableRow identifier="motionRow" id="TZR-1G-ZhI" customClass="MotionRowController" customModule="Iknowwhatyouaredoing">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="SUH-uB-0Kz">
+                                        <items>
+                                            <label alignment="left" text="X" id="IU7-bk-sQR"/>
+                                            <separator height="19" alignment="left" id="jlB-o3-uqj"/>
+                                            <label alignment="left" text="Label" id="15r-t4-dSg"/>
+                                        </items>
+                                        <connections>
+                                            <segue destination="jNP-e0-btl" kind="modal" id="x7O-er-GCR"/>
+                                        </connections>
+                                    </group>
+                                    <connections>
+                                        <outlet property="axisLabel" destination="IU7-bk-sQR" id="v9j-55-PL1"/>
+                                        <outlet property="axisValueLabel" destination="15r-t4-dSg" id="Lk7-TS-ViP"/>
+                                        <outlet property="separator" destination="jlB-o3-uqj" id="dAG-pO-yW1"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="accelLabel" destination="0LY-gd-qcU" id="pWZ-qG-kEb"/>
+                        <outlet property="deviceLabel" destination="xUM-Lh-0fw" id="BNS-aA-r4i"/>
+                        <outlet property="gyroLabel" destination="CL3-9A-GxY" id="oES-hR-JGA"/>
+                        <outlet property="magneticLabel" destination="YJ4-eV-CXZ" id="GAw-Nh-ZXw"/>
+                        <outlet property="table" destination="Fbd-Sh-TUo" id="chS-B7-bl0"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="235" y="347"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="BOz-TT-tkC">
+            <objects>
+                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="WatchMotion" customModuleProvider="target">
+                    <items>
+                        <group alignment="left" id="t8f-Gd-c4y"/>
+                        <group alignment="left" id="uCw-4Q-Ouw"/>
+                    </items>
+                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="235" y="672"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="XkS-y5-khE"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="XkS-y5-khE" id="49B-RR-99y"/>
+                        <segue destination="gdX-wl-uQE" kind="relationship" relationship="dynamicNotificationInterface" id="fKh-qV-3T2"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="235" y="1001"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="KIl-fV-djm">
+            <objects>
+                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="WatchMotion" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="553" y="1001"/>
+        </scene>
+    </scenes>
+</document>

@@ -4,10 +4,30 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Complication - WatchMotion.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Glance - WatchMotion.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Iknowwhatyouaredoing.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>Notification - WatchMotion.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>WatchMotion.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -18,6 +38,11 @@
 			<true/>
 		</dict>
 		<key>CC4A337A1A767B250037ACE8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CCE0B7EC1C13F58F00542053</key>
 		<dict>
 			<key>primary</key>
 			<true/>

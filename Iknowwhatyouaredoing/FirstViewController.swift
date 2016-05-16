@@ -38,10 +38,10 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         sensorAnaylize.sensorAnaylizeOn()
         
         //    Receive(Get) Notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"NotificationIdentifier", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "altimeterNotification:", name:"altimeterNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardNotification:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.methodOfReceivedNotification(_:)), name:"NotificationIdentifier", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.altimeterNotification(_:)), name:"altimeterNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.keyboardNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.keyboardNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         //    Remove Notification
 //        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationIdentifier", object: nil)
@@ -156,7 +156,7 @@ func writeInfoToFile(fileName: String, text: String) {
     let dirs : [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true)
     
     if ((dirs) != nil) {
-        let dir = dirs![0]; //documents directory
+        _ = dirs![0]; //documents directory
         let formatter = NSDateFormatter()
         formatter.timeStyle = NSDateFormatterStyle.MediumStyle
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(fileName + ".txt")

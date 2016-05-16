@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -17,12 +17,13 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchMotion" customModuleProvider="target">
                     <items>
-                        <group width="1" alignment="center" spacing="2" id="ZdR-qY-yiU">
+                        <group width="1" height="19.5" alignment="center" spacing="2" id="ZdR-qY-yiU">
                             <items>
                                 <label alignment="left" text="A" id="0LY-gd-qcU" userLabel="A"/>
                                 <label alignment="left" text="G" id="CL3-9A-GxY" userLabel="G"/>
                                 <label alignment="left" text="M" id="YJ4-eV-CXZ" userLabel="M"/>
                                 <label alignment="left" text="D" id="xUM-Lh-0fw" userLabel="D"/>
+                                <label alignment="left" text="H" id="DrF-cb-KBt" userLabel="H"/>
                             </items>
                         </group>
                         <table alignment="left" id="Fbd-Sh-TUo">
@@ -51,6 +52,7 @@
                         <outlet property="accelLabel" destination="0LY-gd-qcU" id="pWZ-qG-kEb"/>
                         <outlet property="deviceLabel" destination="xUM-Lh-0fw" id="BNS-aA-r4i"/>
                         <outlet property="gyroLabel" destination="CL3-9A-GxY" id="oES-hR-JGA"/>
+                        <outlet property="heartRateLabel" destination="DrF-cb-KBt" id="Kbv-cQ-apP"/>
                         <outlet property="magneticLabel" destination="YJ4-eV-CXZ" id="GAw-Nh-ZXw"/>
                         <outlet property="table" destination="Fbd-Sh-TUo" id="chS-B7-bl0"/>
                     </connections>

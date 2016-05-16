@@ -5,10 +5,13 @@
 //  Created by Jeff Kang on 12/6/15.
 //  Copyright © 2015 jeffgukang. All rights reserved.
 //
+// Heart Rate
+//http://stackoverflow.com/questions/30776331/watch-os-2-0-beta-access-heart-beat-rate/31864640#31864640
 
 import WatchKit
 import Foundation
 import CoreMotion
+import HealthKit
 
 let kUpdateFrequency = 60.0 // min: 10, max: 100
 
@@ -18,9 +21,11 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var gyroLabel: WKInterfaceLabel!
     @IBOutlet var magneticLabel: WKInterfaceLabel!
     @IBOutlet var deviceLabel: WKInterfaceLabel!
+    @IBOutlet var heartRateLabel: WKInterfaceLabel!
     
     var groupController = [TableGroupController]()
     var motionMgr: CMMotionManager!
+//    var healthMgr: HK!
     //    var accelData: CMAccelerometerData?;
     
     override func awakeWithContext(context: AnyObject?) {
@@ -32,6 +37,7 @@ class InterfaceController: WKInterfaceController {
         self.gyroLabel.setTextColor(UIColor.grayColor())
         self.magneticLabel.setTextColor(UIColor.grayColor())
         self.deviceLabel.setTextColor(UIColor.grayColor())
+        self.heartRateLabel.setTextColor(UIColor.grayColor())
         
         if self.motionMgr.accelerometerAvailable {
             self.accelLabel.setTextColor(UIColor.whiteColor())
@@ -43,9 +49,9 @@ class InterfaceController: WKInterfaceController {
             
             self.table.setNumberOfRows(self.groupController.count, withRowType: "motionRow")
             motionMgr.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (accelData: CMAccelerometerData?, error: NSError?) -> Void in
-                self.groupController[0].axisValue.setText(String(accelData?.acceleration.x))
-                self.groupController[1].axisValue.setText(String(accelData?.acceleration.y))
-                self.groupController[2].axisValue.setText(String(accelData?.acceleration.z))
+//                self.groupController[0].axisValue.setText(String(accelData?.acceleration.x))
+//                self.groupController[1].axisValue.setText(String(accelData?.acceleration.y))
+//                self.groupController[2].axisValue.setText(String(accelData?.acceleration.z))
             })
         }
         if self.motionMgr.gyroAvailable {

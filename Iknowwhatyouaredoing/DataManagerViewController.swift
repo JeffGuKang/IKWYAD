@@ -12,7 +12,7 @@ class DataManagerViewController: UITableViewController {
     @IBOutlet weak var dataManagerTableView: UITableView!
     
     let CellIdentifier = "CellIdentifer"
-    var fileNames = [String]()
+    var fileNames = [NSURL]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,30 +44,24 @@ class DataManagerViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)!
         // set cell's textLabel.text property
-        cell.textLabel?.text = self.fileNames[indexPath.row]
+        cell.textLabel?.text = self.fileNames[indexPath.row].absoluteString
         // set cell's detailTextLabel.text property
         cell.detailTextLabel?.text = "Detail"
         return cell
     }
     
-    func listFilesFromDocumentsFolder() -> [String]
+    func listFilesFromDocumentsFolder() -> [NSURL]
     {
-        let theError = NSErrorPointer()
-        let dirs = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true)
-        if !dirs.isEmpty {
-            let dir = dirs[0]
-            let fileList: [AnyObject]?
-            do {
-                fileList = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(dir)
-            }
-            catch let error as NSError {
-                theError.memory = error
-                fileList = nil
-            }
-            return fileList as! [String]
-        }else{
-            let fileList = [""]
-            return fileList
+        
+        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        
+        do {
+            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
+            print(directoryContents)
+            return directoryContents
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            return [documentsUrl]
         }
     }
 }

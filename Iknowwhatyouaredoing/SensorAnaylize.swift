@@ -62,7 +62,7 @@ class SensorAnaylize: NSObject{
     
     
     func sensorAnaylizeOn() {
-        let timer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(kAccelerometerFrequency, target: self, selector: Selector("sensorAnaylizeThread"), userInfo: nil, repeats: true);
+        let timer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(kAccelerometerFrequency, target: self, selector: #selector(SensorAnaylize.sensorAnaylizeThread), userInfo: nil, repeats: true);
         timer.fire();
     }
     
@@ -83,8 +83,7 @@ class SensorAnaylize: NSObject{
         
 //        let info: String = String(format: "%f %f %f %@ \n", _LPFAccelData.x, _LPFAccelData.y, _LPFAccelData.z, normalizeXYZ!)
         let info: String = String(format: "%f %f %f %@ \n", accelData.acceleration.x, accelData.acceleration.y, accelData.acceleration.z, normalizeXYZ)
-
-//        NSLog("Normalize info: %@", info)
+        NSLog("Normalize info: %@", info)
 
         
 

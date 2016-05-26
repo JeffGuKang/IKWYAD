@@ -15,22 +15,32 @@ import HealthKit
 
 let kUpdateFrequency = 60.0 // min: 10, max: 100
 
+enum SensorType : String{
+    case accel      = "accel"
+    case gyro       = "gyro"
+    case magnetic   = "magnetic"
+    case device     = "device"
+    case heartRate  = "heartRate"
+}
+
 class InterfaceController: WKInterfaceController {
-    @IBOutlet var table: WKInterfaceTable!;
-    @IBOutlet var accelLabel: WKInterfaceLabel!
-    @IBOutlet var gyroLabel: WKInterfaceLabel!
-    @IBOutlet var magneticLabel: WKInterfaceLabel!
-    @IBOutlet var deviceLabel: WKInterfaceLabel!
-    @IBOutlet var heartRateLabel: WKInterfaceLabel!
     
-    var groupController = [TableGroupController]()
+    // MARK: Properties
+    @IBOutlet weak var accelLabel: WKInterfaceLabel!
+    @IBOutlet weak var gyroLabel: WKInterfaceLabel!
+    @IBOutlet weak var magneticLabel: WKInterfaceLabel!
+    @IBOutlet weak var deviceLabel: WKInterfaceLabel!
+    @IBOutlet weak var heartRateLabel: WKInterfaceLabel!
+    @IBOutlet weak var informationTable: WKInterfaceTable!
+    
     var motionMgr: CMMotionManager!
 //    var healthMgr: HK!
     //    var accelData: CMAccelerometerData?;
     
     override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+        
         // Configure interface objects here.
+        
         // Check Core Motion Status
         self.motionMgr = CMMotionManager.init()
         self.accelLabel.setTextColor(UIColor.grayColor())
@@ -39,31 +49,46 @@ class InterfaceController: WKInterfaceController {
         self.deviceLabel.setTextColor(UIColor.grayColor())
         self.heartRateLabel.setTextColor(UIColor.grayColor())
         
+        super.awakeWithContext(context)
+
+        // Check accelerometer aviable.
         if self.motionMgr.accelerometerAvailable {
             self.accelLabel.setTextColor(UIColor.whiteColor())
             self.motionMgr.accelerometerUpdateInterval = 1/kUpdateFrequency
-            self.groupController.append(TableGroupController(Label: "X"))
-            self.groupController.append(TableGroupController(Label: "Y"))
-            self.groupController.append(TableGroupController(Label: "Z"))
-            print("Accel is working")
             
-            self.table.setNumberOfRows(self.groupController.count, withRowType: "motionRow")
+            // Make tablerows.
+            let informationDataArray = [InformationData.init(label: "X"), InformationData.init(label: "Y"), InformationData.init(label: "Z")]
+            configureTableWithData(informationDataArray)
+            
             motionMgr.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (accelData: CMAccelerometerData?, error: NSError?) -> Void in
-//                self.groupController[0].axisValue.setText(String(accelData?.acceleration.x))
-//                self.groupController[1].axisValue.setText(String(accelData?.acceleration.y))
-//                self.groupController[2].axisValue.setText(String(accelData?.acceleration.z))
+                let xRow = self.informationTable.rowControllerAtIndex(0) as! InformationTableRowController
+                let yRow = self.informationTable.rowControllerAtIndex(1) as! InformationTableRowController
+                let zRow = self.informationTable.rowControllerAtIndex(2) as! InformationTableRowController
+                xRow.valueLabel.setText(String(accelData?.acceleration.x))
+                yRow.valueLabel.setText(String(accelData?.acceleration.y))
+                zRow.valueLabel.setText(String(accelData?.acceleration.z))
+                
+                
+                //                self.groupController[0].axisValue.setText(String(accelData?.acceleration.x))
+                //                self.groupController[1].axisValue.setText(String(accelData?.acceleration.y))
+                //                self.groupController[2].axisValue.setText(String(accelData?.acceleration.z))
             })
         }
+        
         if self.motionMgr.gyroAvailable {
             self.gyroLabel.setTextColor(UIColor.whiteColor())
         }
+        
         if self.motionMgr.magnetometerAvailable {
             self.magneticLabel.setTextColor(UIColor.whiteColor())
         }
+        
         if self.motionMgr.deviceMotionAvailable {
             self.deviceLabel.setTextColor(UIColor.whiteColor())
         }
     }
+    
+    // MARK: Override functions
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
@@ -75,7 +100,20 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
     
+    override func didAppear() {
+        
+        super.didAppear()
+    }
     
+    // MARK: Table Configurations
     
+    func configureTableWithData(data: [InformationData]!) {
+        self.informationTable.setNumberOfRows(data.count, withRowType: "tableRowController")
+
+        for rowData in data {
+            let row = self.informationTable.rowControllerAtIndex(data.indexOf(rowData)!) as! InformationTableRowController
+            row.textLabel.setText(rowData.label)
+        }
+    }
 }
 

@@ -14,20 +14,22 @@
 		CC4A33731A767B250037ACE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4A33721A767B250037ACE8 /* Images.xcassets */; };
 		CC4A33761A767B250037ACE8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4A33741A767B250037ACE8 /* LaunchScreen.xib */; };
 		CC4A33821A767B250037ACE8 /* IknowwhatyouaredoingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A33811A767B250037ACE8 /* IknowwhatyouaredoingTests.swift */; };
+		CC80EFCE1CF42CBD002E5958 /* InformationTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC80EFCD1CF42CBD002E5958 /* InformationTableRowController.swift */; };
 		CCC80AEC1A88E33000A0EE18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC80AEB1A88E33000A0EE18 /* Constants.swift */; };
 		CCC80AEE1A88E33C00A0EE18 /* AccelerometerFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC80AED1A88E33C00A0EE18 /* AccelerometerFilter.swift */; };
+		CCCC0D7F1CF3453600EA88F8 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCC0D7E1CF3453600EA88F8 /* SensorData.swift */; };
+		CCCC0D801CF3453600EA88F8 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCC0D7E1CF3453600EA88F8 /* SensorData.swift */; };
+		CCCC0D811CF3453600EA88F8 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCC0D7E1CF3453600EA88F8 /* SensorData.swift */; };
+		CCCC0D831CF3472F00EA88F8 /* InformationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCC0D821CF3472F00EA88F8 /* InformationData.swift */; };
+		CCCC0D841CF3472F00EA88F8 /* InformationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCC0D821CF3472F00EA88F8 /* InformationData.swift */; };
+		CCCC0D851CF3472F00EA88F8 /* InformationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCC0D821CF3472F00EA88F8 /* InformationData.swift */; };
 		CCE0B7F11C13F58F00542053 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCE0B7EF1C13F58F00542053 /* Interface.storyboard */; };
 		CCE0B7F31C13F58F00542053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCE0B7F21C13F58F00542053 /* Assets.xcassets */; };
 		CCE0B7FA1C13F58F00542053 /* WatchMotion Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CCE0B7F91C13F58F00542053 /* WatchMotion Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CCE0B8011C13F58F00542053 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0B8001C13F58F00542053 /* InterfaceController.swift */; };
 		CCE0B8031C13F58F00542053 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0B8021C13F58F00542053 /* ExtensionDelegate.swift */; };
-		CCE0B8051C13F58F00542053 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0B8041C13F58F00542053 /* NotificationController.swift */; };
-		CCE0B8071C13F58F00542053 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0B8061C13F58F00542053 /* GlanceController.swift */; };
-		CCE0B8091C13F58F00542053 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0B8081C13F58F00542053 /* ComplicationController.swift */; };
 		CCE0B80B1C13F58F00542053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCE0B80A1C13F58F00542053 /* Assets.xcassets */; };
 		CCE0B80F1C13F58F00542053 /* WatchMotion.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CCE0B7ED1C13F58F00542053 /* WatchMotion.app */; };
-		CCE0B81F1C140CC100542053 /* FirstInterfaceTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0B81E1C140CC100542053 /* FirstInterfaceTable.swift */; };
-		CCE0B8261C1455D100542053 /* TableGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE0B8251C1455D100542053 /* TableGroupController.swift */; };
 		CCFBC7871A7FCB6C00455131 /* SensorAnaylize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBC7861A7FCB6C00455131 /* SensorAnaylize.swift */; };
 		CCFC29451AD213C900719377 /* DataManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFC29441AD213C900719377 /* DataManagerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -93,23 +95,20 @@
 		CC4A337B1A767B250037ACE8 /* IknowwhatyouaredoingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IknowwhatyouaredoingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4A33801A767B250037ACE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4A33811A767B250037ACE8 /* IknowwhatyouaredoingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IknowwhatyouaredoingTests.swift; sourceTree = "<group>"; };
+		CC80EFCD1CF42CBD002E5958 /* InformationTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationTableRowController.swift; sourceTree = "<group>"; };
 		CCC80AEB1A88E33000A0EE18 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CCC80AED1A88E33C00A0EE18 /* AccelerometerFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerFilter.swift; sourceTree = "<group>"; };
+		CCCC0D7E1CF3453600EA88F8 /* SensorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SensorData.swift; path = Shared/SensorData.swift; sourceTree = "<group>"; };
+		CCCC0D821CF3472F00EA88F8 /* InformationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationData.swift; sourceTree = "<group>"; };
 		CCE0B7ED1C13F58F00542053 /* WatchMotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchMotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE0B7F01C13F58F00542053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		CCE0B7F21C13F58F00542053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCE0B7F41C13F58F00542053 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCE0B7F91C13F58F00542053 /* WatchMotion Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchMotion Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCE0B7FF1C13F58F00542053 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CCE0B8001C13F58F00542053 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		CCE0B8021C13F58F00542053 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		CCE0B8041C13F58F00542053 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		CCE0B8061C13F58F00542053 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
-		CCE0B8081C13F58F00542053 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		CCE0B80A1C13F58F00542053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCE0B80C1C13F58F00542053 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCE0B81E1C140CC100542053 /* FirstInterfaceTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstInterfaceTable.swift; sourceTree = "<group>"; };
-		CCE0B8251C1455D100542053 /* TableGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableGroupController.swift; sourceTree = "<group>"; };
 		CCFBC7861A7FCB6C00455131 /* SensorAnaylize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorAnaylize.swift; sourceTree = "<group>"; };
 		CCFC29441AD213C900719377 /* DataManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +141,7 @@
 		CC4A335B1A767B250037ACE8 = {
 			isa = PBXGroup;
 			children = (
+				CCCC0D7B1CF3427E00EA88F8 /* Shared */,
 				CC4A33661A767B250037ACE8 /* Iknowwhatyouaredoing */,
 				CC4A337E1A767B250037ACE8 /* IknowwhatyouaredoingTests */,
 				CCE0B7EE1C13F58F00542053 /* WatchMotion */,
@@ -204,6 +204,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CCCC0D7B1CF3427E00EA88F8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CCCC0D7E1CF3453600EA88F8 /* SensorData.swift */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 		CCE0B7EE1C13F58F00542053 /* WatchMotion */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,26 +225,14 @@
 		CCE0B7FD1C13F58F00542053 /* WatchMotion Extension */ = {
 			isa = PBXGroup;
 			children = (
+				CCCC0D821CF3472F00EA88F8 /* InformationData.swift */,
 				CCE0B8001C13F58F00542053 /* InterfaceController.swift */,
 				CCE0B8021C13F58F00542053 /* ExtensionDelegate.swift */,
-				CCE0B8041C13F58F00542053 /* NotificationController.swift */,
-				CCE0B8061C13F58F00542053 /* GlanceController.swift */,
-				CCE0B8081C13F58F00542053 /* ComplicationController.swift */,
 				CCE0B80A1C13F58F00542053 /* Assets.xcassets */,
 				CCE0B80C1C13F58F00542053 /* Info.plist */,
-				CCE0B7FE1C13F58F00542053 /* Supporting Files */,
-				CCE0B81E1C140CC100542053 /* FirstInterfaceTable.swift */,
-				CCE0B8251C1455D100542053 /* TableGroupController.swift */,
+				CC80EFCD1CF42CBD002E5958 /* InformationTableRowController.swift */,
 			);
 			path = "WatchMotion Extension";
-			sourceTree = "<group>";
-		};
-		CCE0B7FE1C13F58F00542053 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CCE0B7FF1C13F58F00542053 /* PushNotificationPayload.apns */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,8 +404,10 @@
 				CC3DF6C31AAD6F470077BA57 /* NSOutputStream(extention).swift in Sources */,
 				CCFBC7871A7FCB6C00455131 /* SensorAnaylize.swift in Sources */,
 				CC4A336A1A767B250037ACE8 /* AppDelegate.swift in Sources */,
+				CCCC0D831CF3472F00EA88F8 /* InformationData.swift in Sources */,
 				CCFC29451AD213C900719377 /* DataManagerViewController.swift in Sources */,
 				CC4A336C1A767B250037ACE8 /* FirstViewController.swift in Sources */,
+				CCCC0D7F1CF3453600EA88F8 /* SensorData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +416,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC4A33821A767B250037ACE8 /* IknowwhatyouaredoingTests.swift in Sources */,
+				CCCC0D801CF3453600EA88F8 /* SensorData.swift in Sources */,
+				CCCC0D841CF3472F00EA88F8 /* InformationData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,13 +425,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCE0B8051C13F58F00542053 /* NotificationController.swift in Sources */,
 				CCE0B8031C13F58F00542053 /* ExtensionDelegate.swift in Sources */,
-				CCE0B8091C13F58F00542053 /* ComplicationController.swift in Sources */,
 				CCE0B8011C13F58F00542053 /* InterfaceController.swift in Sources */,
-				CCE0B8071C13F58F00542053 /* GlanceController.swift in Sources */,
-				CCE0B81F1C140CC100542053 /* FirstInterfaceTable.swift in Sources */,
-				CCE0B8261C1455D100542053 /* TableGroupController.swift in Sources */,
+				CCCC0D851CF3472F00EA88F8 /* InformationData.swift in Sources */,
+				CC80EFCE1CF42CBD002E5958 /* InformationTableRowController.swift in Sources */,
+				CCCC0D811CF3453600EA88F8 /* SensorData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -554,7 +552,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

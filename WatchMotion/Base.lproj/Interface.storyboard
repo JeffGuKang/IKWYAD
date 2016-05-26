@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
-        <scene sceneID="uNy-rD-lru">
-            <objects>
-                <controller id="jNP-e0-btl"/>
-            </objects>
-            <point key="canvasLocation" x="414" y="347"/>
-        </scene>
-        <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchMotion" customModuleProvider="target">
                     <items>
-                        <group width="1" height="19.5" alignment="center" spacing="2" id="ZdR-qY-yiU">
+                        <group height="19.5" alignment="center" spacing="2" id="ZdR-qY-yiU">
                             <items>
                                 <label alignment="left" text="A" id="0LY-gd-qcU" userLabel="A"/>
                                 <label alignment="left" text="G" id="CL3-9A-GxY" userLabel="G"/>
@@ -26,23 +19,29 @@
                                 <label alignment="left" text="H" id="DrF-cb-KBt" userLabel="H"/>
                             </items>
                         </group>
-                        <table alignment="left" id="Fbd-Sh-TUo">
+                        <table alignment="left" id="sW0-ov-tUe">
                             <items>
-                                <tableRow identifier="motionRow" id="TZR-1G-ZhI" customClass="TableGroupController" customModule="WatchMotion_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="SUH-uB-0Kz">
+                                <tableRow identifier="headerRowController" id="Hzx-e9-arc" userLabel="Header Row Controller" customClass="InformationTableRowController" customModule="WatchMotion_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="tf2-EO-02I">
                                         <items>
-                                            <label alignment="left" text="X" id="IU7-bk-sQR"/>
-                                            <separator height="19" alignment="left" id="jlB-o3-uqj"/>
-                                            <label alignment="left" text="Label" id="15r-t4-dSg"/>
+                                            <label width="1" alignment="left" text="Header" textAlignment="center" id="lk7-NB-8wX"/>
                                         </items>
-                                        <connections>
-                                            <segue destination="jNP-e0-btl" kind="modal" id="x7O-er-GCR"/>
-                                        </connections>
                                     </group>
                                     <connections>
-                                        <outlet property="axisLabel" destination="IU7-bk-sQR" id="k12-Gi-knW"/>
-                                        <outlet property="axisValue" destination="15r-t4-dSg" id="Mw0-gS-tR2"/>
-                                        <outlet property="separator" destination="jlB-o3-uqj" id="dAG-pO-yW1"/>
+                                        <outlet property="valueLabel" destination="lk7-NB-8wX" id="BDp-Nd-unZ"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="tableRowController" id="YvZ-MI-sOW" userLabel="Table Row Controller" customClass="InformationTableRowController" customModule="WatchMotion_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="gdk-KJ-OG2">
+                                        <items>
+                                            <label alignment="left" text="X" id="zEA-VL-0Bf"/>
+                                            <separator alignment="left" id="OJK-qI-zn1"/>
+                                            <label width="0.90000000000000002" alignment="left" text="0" textAlignment="left" id="mrI-gM-IvA"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="textLabel" destination="zEA-VL-0Bf" id="32k-In-JMG"/>
+                                        <outlet property="valueLabel" destination="mrI-gM-IvA" id="Pom-RB-1gz"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -53,48 +52,12 @@
                         <outlet property="deviceLabel" destination="xUM-Lh-0fw" id="BNS-aA-r4i"/>
                         <outlet property="gyroLabel" destination="CL3-9A-GxY" id="oES-hR-JGA"/>
                         <outlet property="heartRateLabel" destination="DrF-cb-KBt" id="Kbv-cQ-apP"/>
+                        <outlet property="informationTable" destination="sW0-ov-tUe" id="5pj-p7-QXC"/>
                         <outlet property="magneticLabel" destination="YJ4-eV-CXZ" id="GAw-Nh-ZXw"/>
-                        <outlet property="table" destination="Fbd-Sh-TUo" id="chS-B7-bl0"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="235" y="347"/>
-        </scene>
-        <!--Glance Interface Controller-->
-        <scene sceneID="BOz-TT-tkC">
-            <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="WatchMotion" customModuleProvider="target">
-                    <items>
-                        <group alignment="left" id="t8f-Gd-c4y"/>
-                        <group alignment="left" id="uCw-4Q-Ouw"/>
-                    </items>
-                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
-                </glanceController>
-            </objects>
-            <point key="canvasLocation" x="235" y="672"/>
-        </scene>
-        <!--Static Notification Interface Controller-->
-        <scene sceneID="AEw-b0-oYE">
-            <objects>
-                <notificationController id="YCC-NB-fut">
-                    <items>
-                        <label alignment="left" text="Alert Label" id="XkS-y5-khE"/>
-                    </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
-                    <connections>
-                        <outlet property="notificationAlertLabel" destination="XkS-y5-khE" id="49B-RR-99y"/>
-                        <segue destination="gdX-wl-uQE" kind="relationship" relationship="dynamicNotificationInterface" id="fKh-qV-3T2"/>
-                    </connections>
-                </notificationController>
-            </objects>
-            <point key="canvasLocation" x="235" y="1001"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="KIl-fV-djm">
-            <objects>
-                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="WatchMotion" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="553" y="1001"/>
         </scene>
     </scenes>
 </document>

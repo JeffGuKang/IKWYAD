@@ -34,8 +34,8 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet weak var informationTable: WKInterfaceTable!
     
     var motionMgr: CMMotionManager!
-//    var healthMgr: HK!
-    //    var accelData: CMAccelerometerData?;
+
+    // MARK: Override functions
     
     override func awakeWithContext(context: AnyObject?) {
         
@@ -50,7 +50,11 @@ class InterfaceController: WKInterfaceController {
         self.heartRateLabel.setTextColor(UIColor.grayColor())
         
         super.awakeWithContext(context)
-
+        
+        if self.motionMgr.gyroAvailable {
+            self.gyroLabel.setTextColor(UIColor.whiteColor())
+        }
+        
         // Check accelerometer aviable.
         if self.motionMgr.accelerometerAvailable {
             self.accelLabel.setTextColor(UIColor.whiteColor())
@@ -60,23 +64,15 @@ class InterfaceController: WKInterfaceController {
             let informationDataArray = [InformationData.init(label: "X"), InformationData.init(label: "Y"), InformationData.init(label: "Z")]
             configureTableWithData(informationDataArray)
             
+            // Treat accelerometer datas.
             motionMgr.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (accelData: CMAccelerometerData?, error: NSError?) -> Void in
                 let xRow = self.informationTable.rowControllerAtIndex(0) as! InformationTableRowController
                 let yRow = self.informationTable.rowControllerAtIndex(1) as! InformationTableRowController
                 let zRow = self.informationTable.rowControllerAtIndex(2) as! InformationTableRowController
-                xRow.valueLabel.setText(String(accelData?.acceleration.x))
-                yRow.valueLabel.setText(String(accelData?.acceleration.y))
-                zRow.valueLabel.setText(String(accelData?.acceleration.z))
-                
-                
-                //                self.groupController[0].axisValue.setText(String(accelData?.acceleration.x))
-                //                self.groupController[1].axisValue.setText(String(accelData?.acceleration.y))
-                //                self.groupController[2].axisValue.setText(String(accelData?.acceleration.z))
+                xRow.valueLabel.setText(String(format:"%.5f", accelData!.acceleration.x))
+                yRow.valueLabel.setText(String(format:"%.5f", accelData!.acceleration.y))
+                zRow.valueLabel.setText(String(format:"%.5f", accelData!.acceleration.z))
             })
-        }
-        
-        if self.motionMgr.gyroAvailable {
-            self.gyroLabel.setTextColor(UIColor.whiteColor())
         }
         
         if self.motionMgr.magnetometerAvailable {
@@ -86,9 +82,8 @@ class InterfaceController: WKInterfaceController {
         if self.motionMgr.deviceMotionAvailable {
             self.deviceLabel.setTextColor(UIColor.whiteColor())
         }
+        
     }
-    
-    // MARK: Override functions
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user

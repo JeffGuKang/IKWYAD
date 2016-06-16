@@ -30,7 +30,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     var originalConstraint: CGFloat?
-    var timeDate: NSDate?
+    var timeDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,20 +38,20 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         sensorAnaylize.sensorAnaylizeOn()
         
         //    Receive(Get) Notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.methodOfReceivedNotification(_:)), name:"NotificationIdentifier", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.altimeterNotification(_:)), name:"altimeterNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.keyboardNotification(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.keyboardNotification(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(FirstViewController.methodOfReceivedNotification(_:)), name:"NotificationIdentifier", object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(FirstViewController.altimeterNotification(_:)), name:"altimeterNotification", object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(FirstViewController.keyboardNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default().addObserver(self, selector: #selector(FirstViewController.keyboardNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         //    Remove Notification
 //        NSNotificationCenter.defaultCenter().removeObserver(self, name: "NotificationIdentifier", object: nil)
-        timeDate = NSDate()
+        timeDate = Date()
         self.originalConstraint = self.keyboardHeightLayoutConstraint?.constant
         self.fileNameTextField.delegate = self
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default().removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,13 +60,13 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true) // Causes the view (or one of its embedded text fields) to resign the first responder status.
-        super.touchesBegan(touches, withEvent: event)
+        super.touchesBegan(touches, with: event)
     }
     
     //Action take on notification
-    func methodOfReceivedNotification(notification: NSNotification){
+    func methodOfReceivedNotification(_ notification: Notification){
 
         let accel_x = sensorAnaylize.accelData.acceleration.x
         let accel_y = sensorAnaylize.accelData.acceleration.y
@@ -97,7 +97,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    func altimeterNotification(notification: NSNotification) {
+    func altimeterNotification(_ notification: Notification) {
         altituteLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.pressure) as String
         relativeAltitudeLabel.text = NSString(format: "%@", sensorAnaylize.altitudeData.relativeAltitude) as String
         
@@ -111,55 +111,55 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func keyboardNotification(notification: NSNotification) {
-        let isShowing = notification.name == UIKeyboardWillShowNotification
+    func keyboardNotification(_ notification: Notification) {
+        let isShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
         
         var tabbarHeight: CGFloat = 0
         if self.tabBarController != nil {
             tabbarHeight = self.tabBarController!.tabBar.frame.height
         }
-        if let userInfo = notification.userInfo {
-            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue()
-            let duration:NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+        if let userInfo = (notification as NSNotification).userInfo {
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue()
+            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
-            let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
+            let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions().rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             self.keyboardHeightLayoutConstraint?.constant = isShowing ? (endFrame!.size.height - tabbarHeight) : self.originalConstraint!
-            UIView.animateWithDuration(duration,
-                delay: NSTimeInterval(0),
+            UIView.animate(withDuration: duration,
+                delay: TimeInterval(0),
                 options: animationCurve,
                 animations: { self.view.layoutIfNeeded() },
                 completion: nil)
         }
     }
     
-    @IBAction func recordButtonPushed(sender: AnyObject) {
+    @IBAction func recordButtonPushed(_ sender: AnyObject) {
         if recordButton.currentTitle == "Start" {
-            recordButton.setTitle("Stop", forState: UIControlState.Normal)
+            recordButton.setTitle("Stop", for: UIControlState())
             recordLabel.text = "Recording"
-            self.timeDate = NSDate()
+            self.timeDate = Date()
         }
         else {
-            recordButton.setTitle("Start", forState: UIControlState.Normal)
+            recordButton.setTitle("Start", for: UIControlState())
             recordLabel.text = "Record"
         }
     }
     
 //    MARK: UITextField Delegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         fileNameTextField.resignFirstResponder()
         return false
     }
 }
 
-func writeInfoToFile(fileName: String, text: String) {
-    let dirs : [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true)
+func writeInfoToFile(_ fileName: String, text: String) {
+    let dirs : [String]? = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true)
     
     if ((dirs) != nil) {
         _ = dirs![0]; //documents directory
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = NSDateFormatterStyle.MediumStyle
-        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(fileName + ".txt")
+        let formatter = DateFormatter()
+        formatter.timeStyle = DateFormatter.Style.mediumStyle
+        let path = try! URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName + ".txt")
 //        let path = dir.stringByAppendingPathComponent(fileName + ".txt");
 
         if let outputStream = NSOutputStream(toFileAtPath: "\(path)", append: true) {

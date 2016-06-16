@@ -37,11 +37,11 @@ let kSaveMode = 0 //0:simple 1:all
 let kOneStep = "oneStep"
 let khttpAddress = "http://itspace.kr/step/step.cgi"
 
-func DEG2RAD(degrees: Double) -> Double {
+func DEG2RAD(_ degrees: Double) -> Double {
     return (degrees * M_PI/180.0)
 } // degrees * pi over 180
 
-func RAD2DEG(radians: Double) -> Double {
+func RAD2DEG(_ radians: Double) -> Double {
     return (radians * 180.0/M_PI) // radians * 180 over pi
 }
 

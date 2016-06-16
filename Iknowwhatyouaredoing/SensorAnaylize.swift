@@ -39,7 +39,7 @@ class SensorAnaylize: NSObject{
         _motionManager.startGyroUpdates()
         //magnetometer
         _motionManager.magnetometerUpdateInterval = kAccelerometerFrequency
-        _motionManager.magnetometerActive
+        _motionManager.isMagnetometerActive
         
         _LPFAccelData = LowPassFilter(sampleRate: kUpdateFrequency, cutoffFrequency: kCutoffFrequency);
         _XYZArray = NSMutableArray(capacity: kBufferCapacity)
@@ -50,11 +50,11 @@ class SensorAnaylize: NSObject{
         super.init()
 
         if (CMAltimeter.isRelativeAltitudeAvailable()) {
-            altimeter.startRelativeAltitudeUpdatesToQueue(NSOperationQueue.mainQueue(),
+            altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main(),
                 withHandler: { data, error in
                     if (error == nil) {
                         self.altitudeData = data
-                        NSNotificationCenter.defaultCenter().postNotificationName("altimeterNotification", object: nil)
+                        NotificationCenter.default().post(name: Notification.Name(rawValue: "altimeterNotification"), object: nil)
                     }
                 })
         }
@@ -62,7 +62,7 @@ class SensorAnaylize: NSObject{
     
     
     func sensorAnaylizeOn() {
-        let timer: NSTimer = NSTimer.scheduledTimerWithTimeInterval(kAccelerometerFrequency, target: self, selector: #selector(SensorAnaylize.sensorAnaylizeThread), userInfo: nil, repeats: true);
+        let timer: Timer = Timer.scheduledTimer(timeInterval: kAccelerometerFrequency, target: self, selector: #selector(SensorAnaylize.sensorAnaylizeThread), userInfo: nil, repeats: true);
         timer.fire();
     }
     
@@ -87,11 +87,11 @@ class SensorAnaylize: NSObject{
 
         
 
-        _XYZArray.addObject(normalizeXYZ!)
+        _XYZArray.add(normalizeXYZ!)
         // TODO: Step Detection. Runtime Error
         if (self.stepDetection) {
             if (_XYZArray.count > kBufferCapacity) {
-                _XYZArray.removeObjectAtIndex(0)
+                _XYZArray.removeObject(at: 0)
                 
                 
                 
@@ -135,13 +135,13 @@ class SensorAnaylize: NSObject{
 //                }
             }
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("NotificationIdentifier", object: nil)
+        NotificationCenter.default().post(name: Notification.Name(rawValue: "NotificationIdentifier"), object: nil)
     }
     
 }
 
 
-func backwards(s1: String, s2: String) -> Bool {
+func backwards(_ s1: String, s2: String) -> Bool {
     return s1 > s2
 }
 

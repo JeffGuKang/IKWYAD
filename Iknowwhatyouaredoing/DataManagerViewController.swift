@@ -12,7 +12,7 @@ class DataManagerViewController: UITableViewController {
     @IBOutlet weak var dataManagerTableView: UITableView!
     
     let CellIdentifier = "CellIdentifer"
-    var fileNames = [NSURL]()
+    var fileNames = [URL]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class DataManagerViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.fileNames = listFilesFromDocumentsFolder()
         self.tableView.reloadData()
     }
@@ -33,30 +33,30 @@ class DataManagerViewController: UITableViewController {
     }
     
     // MARK: tableViewDelegate, tableViewDataSource
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1 // This was put in mainly for my own unit testing
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.fileNames.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)!
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier)!
         // set cell's textLabel.text property
-        cell.textLabel?.text = self.fileNames[indexPath.row].absoluteString
+        cell.textLabel?.text = self.fileNames[(indexPath as NSIndexPath).row].absoluteString
         // set cell's detailTextLabel.text property
         cell.detailTextLabel?.text = "Detail"
         return cell
     }
     
-    func listFilesFromDocumentsFolder() -> [NSURL]
+    func listFilesFromDocumentsFolder() -> [URL]
     {
         
-        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        let documentsUrl =  FileManager.default().urlsForDirectory(.documentDirectory, inDomains: .userDomainMask).first!
         
         do {
-            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
+            let directoryContents = try FileManager.default().contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions())
             print(directoryContents)
             return directoryContents
         } catch let error as NSError {

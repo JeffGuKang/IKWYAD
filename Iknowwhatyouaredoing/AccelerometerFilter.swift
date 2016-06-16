@@ -19,7 +19,7 @@ class AccelerometerFilter : NSObject {
     var lastX, lastY, lastZ: CMAcceleration!;
 
     
-    func addAcceleration(accel: CMAcceleration) {
+    func addAcceleration(_ accel: CMAcceleration) {
         x = accel.x
         y = accel.y
         z = accel.z
@@ -28,11 +28,11 @@ class AccelerometerFilter : NSObject {
 }
 
 
-func Norm(x: Double, y: Double, z: Double) -> Double {
+func Norm(_ x: Double, y: Double, z: Double) -> Double {
     return sqrt(x * x + y * y + z * z)
 }
 
-func Clamp(v: Double, min: Double, max: Double) -> Double {
+func Clamp(_ v: Double, min: Double, max: Double) -> Double {
     if (v > max) {
         return max
     }
@@ -56,18 +56,18 @@ class LowPassFilter : AccelerometerFilter {
         filterConstant = dt / (dt + RC);
     }
     
-    override func addAcceleration(accel: CMAcceleration) {
+    override func addAcceleration(_ accel: CMAcceleration) {
         let alpha: Double! = filterConstant;
         x = accel.x * alpha + x * (1.0 - alpha);
         y = accel.y * alpha + y * (1.0 - alpha);
         z = accel.z * alpha + z * (1.0 - alpha);
     }
     
-    func addAccelerometerData(aX: Double, aY: Double, aZ: Double) {
+    func addAccelerometerData(_ aX: Double, aY: Double, aZ: Double) {
         let alpha = filterConstant;
-        x = aX * alpha + x * (1.0 - alpha);
-        y = aY * alpha + y * (1.0 - alpha);
-        z = aZ * alpha + z * (1.0 - alpha);
+        x = aX * alpha! + x * (1.0 - alpha!);
+        y = aY * alpha! + y * (1.0 - alpha!);
+        z = aZ * alpha! + z * (1.0 - alpha!);
     }
     
     func descript() -> NSString {

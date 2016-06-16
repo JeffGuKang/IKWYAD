@@ -21,6 +21,7 @@ enum SensorType : String{
     case magnetic   = "magnetic"
     case device     = "device"
     case heartRate  = "heartRate"
+    case barometer  = "barometer"
 }
 
 class InterfaceController: WKInterfaceController {
@@ -37,27 +38,27 @@ class InterfaceController: WKInterfaceController {
 
     // MARK: Override functions
     
-    override func awakeWithContext(context: AnyObject?) {
+    override func awake(withContext context: AnyObject?) {
         
         // Configure interface objects here.
         
         // Check Core Motion Status
         self.motionMgr = CMMotionManager.init()
-        self.accelLabel.setTextColor(UIColor.grayColor())
-        self.gyroLabel.setTextColor(UIColor.grayColor())
-        self.magneticLabel.setTextColor(UIColor.grayColor())
-        self.deviceLabel.setTextColor(UIColor.grayColor())
-        self.heartRateLabel.setTextColor(UIColor.grayColor())
+        self.accelLabel.setTextColor(UIColor.gray())
+        self.gyroLabel.setTextColor(UIColor.gray())
+        self.magneticLabel.setTextColor(UIColor.gray())
+        self.deviceLabel.setTextColor(UIColor.gray())
+        self.heartRateLabel.setTextColor(UIColor.gray())
         
-        super.awakeWithContext(context)
+        super.awake(withContext: context)
         
-        if self.motionMgr.gyroAvailable {
-            self.gyroLabel.setTextColor(UIColor.whiteColor())
+        if self.motionMgr.isGyroAvailable {
+            self.gyroLabel.setTextColor(UIColor.white())
         }
         
         // Check accelerometer aviable.
-        if self.motionMgr.accelerometerAvailable {
-            self.accelLabel.setTextColor(UIColor.whiteColor())
+        if self.motionMgr.isAccelerometerAvailable {
+            self.accelLabel.setTextColor(UIColor.white())
             self.motionMgr.accelerometerUpdateInterval = 1/kUpdateFrequency
             
             // Make tablerows.
@@ -65,22 +66,22 @@ class InterfaceController: WKInterfaceController {
             configureTableWithData(informationDataArray)
             
             // Treat accelerometer datas.
-            motionMgr.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (accelData: CMAccelerometerData?, error: NSError?) -> Void in
-                let xRow = self.informationTable.rowControllerAtIndex(0) as! InformationTableRowController
-                let yRow = self.informationTable.rowControllerAtIndex(1) as! InformationTableRowController
-                let zRow = self.informationTable.rowControllerAtIndex(2) as! InformationTableRowController
+            motionMgr.startAccelerometerUpdates(to: OperationQueue.main(), withHandler: { (accelData: CMAccelerometerData?, error: NSError?) -> Void in
+                let xRow = self.informationTable.rowController(at: 0) as! InformationTableRowController
+                let yRow = self.informationTable.rowController(at: 1) as! InformationTableRowController
+                let zRow = self.informationTable.rowController(at: 2) as! InformationTableRowController
                 xRow.valueLabel.setText(String(format:"%.5f", accelData!.acceleration.x))
                 yRow.valueLabel.setText(String(format:"%.5f", accelData!.acceleration.y))
                 zRow.valueLabel.setText(String(format:"%.5f", accelData!.acceleration.z))
             })
         }
         
-        if self.motionMgr.magnetometerAvailable {
-            self.magneticLabel.setTextColor(UIColor.whiteColor())
+        if self.motionMgr.isMagnetometerAvailable {
+            self.magneticLabel.setTextColor(UIColor.white())
         }
         
-        if self.motionMgr.deviceMotionAvailable {
-            self.deviceLabel.setTextColor(UIColor.whiteColor())
+        if self.motionMgr.isDeviceMotionAvailable {
+            self.deviceLabel.setTextColor(UIColor.white())
         }
         
     }
@@ -102,11 +103,11 @@ class InterfaceController: WKInterfaceController {
     
     // MARK: Table Configurations
     
-    func configureTableWithData(data: [InformationData]!) {
+    func configureTableWithData(_ data: [InformationData]!) {
         self.informationTable.setNumberOfRows(data.count, withRowType: "tableRowController")
 
         for rowData in data {
-            let row = self.informationTable.rowControllerAtIndex(data.indexOf(rowData)!) as! InformationTableRowController
+            let row = self.informationTable.rowController(at: data.index(of: rowData)!) as! InformationTableRowController
             row.textLabel.setText(rowData.label)
         }
     }

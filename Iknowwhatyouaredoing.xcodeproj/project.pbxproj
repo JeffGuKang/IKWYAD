@@ -15,6 +15,8 @@
 		CC4A33761A767B250037ACE8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4A33741A767B250037ACE8 /* LaunchScreen.xib */; };
 		CC4A33821A767B250037ACE8 /* IknowwhatyouaredoingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A33811A767B250037ACE8 /* IknowwhatyouaredoingTests.swift */; };
 		CC80EFCE1CF42CBD002E5958 /* InformationTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC80EFCD1CF42CBD002E5958 /* InformationTableRowController.swift */; };
+		CC8BD68A1D1521C3008537A3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8BD6891D1521C3008537A3 /* SignUpViewController.swift */; };
+		CC8BD68C1D152533008537A3 /* PrefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8BD68B1D152533008537A3 /* PrefViewController.swift */; };
 		CCC80AEC1A88E33000A0EE18 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC80AEB1A88E33000A0EE18 /* Constants.swift */; };
 		CCC80AEE1A88E33C00A0EE18 /* AccelerometerFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC80AED1A88E33C00A0EE18 /* AccelerometerFilter.swift */; };
 		CCCC0D7F1CF3453600EA88F8 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCC0D7E1CF3453600EA88F8 /* SensorData.swift */; };
@@ -96,6 +98,8 @@
 		CC4A33801A767B250037ACE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4A33811A767B250037ACE8 /* IknowwhatyouaredoingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IknowwhatyouaredoingTests.swift; sourceTree = "<group>"; };
 		CC80EFCD1CF42CBD002E5958 /* InformationTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationTableRowController.swift; sourceTree = "<group>"; };
+		CC8BD6891D1521C3008537A3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CC8BD68B1D152533008537A3 /* PrefViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefViewController.swift; sourceTree = "<group>"; };
 		CCC80AEB1A88E33000A0EE18 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CCC80AED1A88E33C00A0EE18 /* AccelerometerFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccelerometerFilter.swift; sourceTree = "<group>"; };
 		CCCC0D7E1CF3453600EA88F8 /* SensorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SensorData.swift; path = Shared/SensorData.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 				CC4A33741A767B250037ACE8 /* LaunchScreen.xib */,
 				CC4A33671A767B250037ACE8 /* Supporting Files */,
 				CC3DF6C21AAD6F470077BA57 /* NSOutputStream(extention).swift */,
+				CC8BD6891D1521C3008537A3 /* SignUpViewController.swift */,
+				CC8BD68B1D152533008537A3 /* PrefViewController.swift */,
 			);
 			path = Iknowwhatyouaredoing;
 			sourceTree = "<group>";
@@ -316,13 +322,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = jeffgukang;
 				TargetAttributes = {
 					CC4A33631A767B250037ACE8 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = KW3484UDPV;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					CC4A337A1A767B250037ACE8 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -335,6 +342,8 @@
 					};
 					CCE0B7F81C13F58F00542053 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = KW3484UDPV;
+						DevelopmentTeamName = sandfox;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -402,10 +411,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC8BD68C1D152533008537A3 /* PrefViewController.swift in Sources */,
 				CCC80AEC1A88E33000A0EE18 /* Constants.swift in Sources */,
 				CCC80AEE1A88E33C00A0EE18 /* AccelerometerFilter.swift in Sources */,
 				CC3DF6C31AAD6F470077BA57 /* NSOutputStream(extention).swift in Sources */,
 				CCFBC7871A7FCB6C00455131 /* SensorAnaylize.swift in Sources */,
+				CC8BD68A1D1521C3008537A3 /* SignUpViewController.swift in Sources */,
 				CC4A336A1A767B250037ACE8 /* AppDelegate.swift in Sources */,
 				CCCC0D831CF3472F00EA88F8 /* InformationData.swift in Sources */,
 				CCFC29451AD213C900719377 /* DataManagerViewController.swift in Sources */,
@@ -507,6 +518,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -549,6 +561,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -588,6 +601,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "jeffgukang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -618,6 +632,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jeffgukang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Iknowwhatyouaredoing.app/Iknowwhatyouaredoing";
 			};
 			name = Release;
@@ -656,6 +671,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -665,11 +681,11 @@
 		CCE0B8151C13F58F00542053 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				IBSC_MODULE = WatchMotion_Extension;
 				INFOPLIST_FILE = WatchMotion/Info.plist;
@@ -686,12 +702,12 @@
 		CCE0B8161C13F58F00542053 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				IBSC_MODULE = WatchMotion_Extension;
 				INFOPLIST_FILE = WatchMotion/Info.plist;

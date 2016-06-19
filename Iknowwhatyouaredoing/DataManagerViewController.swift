@@ -43,8 +43,13 @@ class DataManagerViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier)!
+        
         // set cell's textLabel.text property
-        cell.textLabel?.text = self.fileNames[(indexPath as NSIndexPath).row].absoluteString
+        var filename = self.fileNames[(indexPath as NSIndexPath).row].absoluteString
+        filename = filename!.components(separatedBy: "/").last
+        
+        cell.textLabel?.text = filename
+        
         // set cell's detailTextLabel.text property
         cell.detailTextLabel?.text = "Detail"
         return cell

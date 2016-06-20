@@ -37,7 +37,7 @@ class SignUpViewController: UIViewController {
         }
         
         else {
-            print("submit clicked")
+        
             // Post request.
             let url = URL(string: "http://188.166.178.220:8080/signup/")!
             let request = NSMutableURLRequest(url: url)

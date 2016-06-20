@@ -14,6 +14,7 @@
 		CC4A33731A767B250037ACE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4A33721A767B250037ACE8 /* Images.xcassets */; };
 		CC4A33761A767B250037ACE8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4A33741A767B250037ACE8 /* LaunchScreen.xib */; };
 		CC4A33821A767B250037ACE8 /* IknowwhatyouaredoingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A33811A767B250037ACE8 /* IknowwhatyouaredoingTests.swift */; };
+		CC4B06771D1698DA009BCAC3 /* ServerAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4B06761D1698DA009BCAC3 /* ServerAPIManager.swift */; };
 		CC80EFCE1CF42CBD002E5958 /* InformationTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC80EFCD1CF42CBD002E5958 /* InformationTableRowController.swift */; };
 		CC8BD68A1D1521C3008537A3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8BD6891D1521C3008537A3 /* SignUpViewController.swift */; };
 		CC8BD68C1D152533008537A3 /* PrefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8BD68B1D152533008537A3 /* PrefViewController.swift */; };
@@ -97,6 +98,7 @@
 		CC4A337B1A767B250037ACE8 /* IknowwhatyouaredoingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IknowwhatyouaredoingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4A33801A767B250037ACE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4A33811A767B250037ACE8 /* IknowwhatyouaredoingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IknowwhatyouaredoingTests.swift; sourceTree = "<group>"; };
+		CC4B06761D1698DA009BCAC3 /* ServerAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerAPIManager.swift; sourceTree = "<group>"; };
 		CC80EFCD1CF42CBD002E5958 /* InformationTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationTableRowController.swift; sourceTree = "<group>"; };
 		CC8BD6891D1521C3008537A3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CC8BD68B1D152533008537A3 /* PrefViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				CCCC0D7E1CF3453600EA88F8 /* SensorData.swift */,
+				CC4B06761D1698DA009BCAC3 /* ServerAPIManager.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				CC4A336A1A767B250037ACE8 /* AppDelegate.swift in Sources */,
 				CCCC0D831CF3472F00EA88F8 /* InformationData.swift in Sources */,
 				CCFC29451AD213C900719377 /* DataManagerViewController.swift in Sources */,
+				CC4B06771D1698DA009BCAC3 /* ServerAPIManager.swift in Sources */,
 				CC4A336C1A767B250037ACE8 /* FirstViewController.swift in Sources */,
 				CCCC0D7F1CF3453600EA88F8 /* SensorData.swift in Sources */,
 			);

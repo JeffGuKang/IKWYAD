@@ -55,6 +55,52 @@ class DataManagerViewController: UITableViewController {
         return cell
     }
     
+    // Editable Tableview Cells.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let uploadAction = UITableViewRowAction(
+            style: .normal,
+            title: "Upload",
+            handler: {(action, indexPath) in
+                let uploadMenu = UIAlertController(title: "Upload", message: "This file will be uploaded", preferredStyle: .actionSheet)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    fileUploadToServer(filepath: self.fileNames[indexPath.row])
+                })
+                let cancelAction = UIAlertAction(title:"Cancel", style: .cancel, handler: nil)
+                
+                uploadMenu.addAction(okAction)
+                uploadMenu.addAction(cancelAction)
+                
+                self.present(uploadMenu,
+                             animated: true,
+                             completion: nil)
+            }
+        )
+    
+        let deleteAction = UITableViewRowAction(
+            style: .default,
+            title: "Delete",
+            handler: {
+                (action, indexPath) in
+                let fileManager = FileManager.default()
+                let path = self.fileNames[indexPath.row]
+                do {
+                    try fileManager.removeItem(at: path)
+                    self.fileNames.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                }
+                catch {
+                    print("Error: File delete -> \(error)")
+                }
+        })
+        
+        return [uploadAction, deleteAction]
+    }
+
+    
     func listFilesFromDocumentsFolder() -> [URL]
     {
         
@@ -62,7 +108,6 @@ class DataManagerViewController: UITableViewController {
         
         do {
             let directoryContents = try FileManager.default().contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions())
-            print(directoryContents)
             return directoryContents
         } catch let error as NSError {
             print(error.localizedDescription)

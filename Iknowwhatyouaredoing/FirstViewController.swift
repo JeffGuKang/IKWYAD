@@ -9,9 +9,6 @@
 import UIKit
 
 class FirstViewController: UIViewController, UITextFieldDelegate {
-
-    var sensorAnaylize: SensorAnaylize = SensorAnaylize()
-    
     
     @IBOutlet weak var accelLabelX: UILabel!
     @IBOutlet weak var accelLabelY: UILabel!
@@ -29,8 +26,19 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
+    
+    var sensorAnaylize: SensorAnaylize = SensorAnaylize()
     var originalConstraint: CGFloat?
     var timeDate: Date?
+    var updateStatusTimer: Timer!
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        self.updateStatusTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateStatusToServer), userInfo: nil, repeats: true)
+        updateStatusTimer.invalidate()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +115,8 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         if recordButton.currentTitle == "Stop" {
             writeInfoToFile(fileNameTextField.text! + "_altimeter", text: info)
         }
+        
+        // MARK: Status upload to server.
         else {
         }
     }
@@ -132,7 +142,14 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
                 completion: nil)
         }
     }
-    
+
+    // MARK: UITextField Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        fileNameTextField.resignFirstResponder()
+        return false
+    }
+
+    // MARK: IBActions
     @IBAction func recordButtonPushed(_ sender: AnyObject) {
         if recordButton.currentTitle == "Start" {
             recordButton.setTitle("Stop", for: UIControlState())
@@ -145,10 +162,25 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-//    MARK: UITextField Delegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        fileNameTextField.resignFirstResponder()
-        return false
+    @IBAction func uploadButtonPushed(_ sender: UISwitch) {
+        if sender.isOn {
+            self.updateStatusTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateStatusToServer), userInfo: nil, repeats: true)
+        }
+        else {
+            self.updateStatusTimer.invalidate()
+        }
+    }
+    
+    func updateStatusToServer() {
+        if sensorAnaylize.altitudeData != nil {
+            print(sensorAnaylize.altitudeData)
+            let data = sensorAnaylize.altitudeData.relativeAltitude.floatValue*100
+            
+            let dictionary = [
+                "floor": String(Int(data))
+            ]
+            statusUploadToServer(dictionary: dictionary)
+        }
     }
 }
 

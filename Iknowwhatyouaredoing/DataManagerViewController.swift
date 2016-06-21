@@ -23,7 +23,7 @@ class DataManagerViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.fileNames = listFilesFromDocumentsFolder()
+        self.fileNames = listFilesFromDocumentsFolder()!
         self.tableView.reloadData()
     }
     
@@ -101,7 +101,7 @@ class DataManagerViewController: UITableViewController {
     }
 
     
-    func listFilesFromDocumentsFolder() -> [URL]
+    func listFilesFromDocumentsFolder() -> [URL]?
     {
         
         let documentsUrl =  FileManager.default().urlsForDirectory(.documentDirectory, inDomains: .userDomainMask).first!
@@ -111,7 +111,7 @@ class DataManagerViewController: UITableViewController {
             return directoryContents
         } catch let error as NSError {
             print(error.localizedDescription)
-            return [documentsUrl]
+            return nil
         }
     }
 }

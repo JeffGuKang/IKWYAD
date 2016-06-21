@@ -75,3 +75,59 @@ func fileUploadToServer(filepath: URL) {
     })
     task.resume()
 }
+
+
+/**
+ UserStatus upload to server.
+ 
+ Model
+ "sequence": 1,
+ "grade": 3,
+ "status": 3,
+ "floor": 300,
+ "coordinate_x": 0.0,
+ "coordinate_y": 0.0
+ 
+ floor: cm
+*/
+ func statusUploadToServer(dictionary: Dictionary<String, String>) {
+    // Post request.
+    let url = URL(string: "http://188.166.178.220:8080/userstatus/")!
+    let request = NSMutableURLRequest(url: url)
+    request.httpMethod = "POST"
+    
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
+        
+        // Insert json data to the request.
+        request.httpBody = jsonData
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    }
+    catch {
+        print("Error -> \(error)")
+    }
+    
+    let session = URLSession.shared()
+    let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+        guard error == nil && data != nil else {                                                          // check for fundamental networking error
+            print("error=\(error)")
+            return
+        }
+        
+        if let httpStatus = response as? HTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
+            print("statusCode should be 200, but is \(httpStatus.statusCode)")
+            print("response = \(response)")
+        }
+        
+        do {
+            let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+            print("responseString = \(jsonResponse)")
+            print("Response -> \(response)")
+        }
+        catch {
+            print("error=\(error)")
+            
+        }
+    })
+    task.resume()
+}
